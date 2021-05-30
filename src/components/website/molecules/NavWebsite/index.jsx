@@ -18,7 +18,7 @@ function NavWebsite() {
                 console.log(error);
             }
         })();
-    }, []);
+    }, [dispatch]);
 
     return (
         <ul className='flex items-center text-[15px] font-body font-medium capitalize'>

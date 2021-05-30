@@ -6,8 +6,11 @@ function SectionInfo() {
     return (
         <>
             <Button
-                variant='black'
-                className={'text-[15px] mb-10 font-semibold text-white rounded-xl hover:bg-yellow-700 transition-colors'}
+                variant='btn-tag'
+                color='text-white'
+                dark
+                twCustom={true}
+                classname='mb-8 font-semibold text-[15px]'
             >
                 New colection
             </Button>

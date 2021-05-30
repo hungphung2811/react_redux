@@ -6,7 +6,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 function HomePage() {
-    const products = useSelector(state => state.product);
+    // const products = useSelector(state => state.product);
     const category = useSelector(state => state.category)
     const dispatch = useDispatch();
 
@@ -19,7 +19,7 @@ function HomePage() {
 
             }
         })();
-    }, [])
+    }, [dispatch])
 
     if (category.loading) {
         return <h1>loading ....</h1>

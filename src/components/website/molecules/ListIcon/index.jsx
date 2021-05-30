@@ -6,29 +6,25 @@ function ListIcon() {
     return (
         <ul className='flex items-center'>
             <li className='px-3 text-gray-500'>
-                <a href="#">
+                <a href="facebook.com" target='_blank' rel='noopener noreperrer'>
                     <FiFacebook />
                 </a>
             </li>
             <li className='px-3 text-gray-500'>
-                <a href="#">
+                <a href="twitter.com" target='_blank' rel='noopener noreperrer'>
                     <FiTwitter />
                 </a>
             </li>
             <li className='px-3 text-gray-500'>
-                <a href="#">
+                <a href="instagram.com" target='_blank' rel='noopener noreperrer'>
                     <FaInstagram />
                 </a>
             </li>
             <li className='px-3 text-gray-500'>
-                <a href="#">
-                    <FiSearch />
-                </a>
+                <FiSearch cursor='pointer'/>
             </li>
             <li className='px-3 text-gray-500'>
-                <a href="#">
-                    <FiShoppingCart />
-                </a>
+                <FiShoppingCart cursor='pointer' />
             </li>
         </ul>
     )
