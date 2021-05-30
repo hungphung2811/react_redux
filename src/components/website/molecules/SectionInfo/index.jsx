@@ -16,7 +16,7 @@ function SectionInfo() {
             </Button>
 
             <Text
-                heading='h2'
+                variant='h2'
                 className={'mb-5 text-[2.5rem] font-semibold text-gray-900 text-left'}
             >
                 Fill your home with uniqueness

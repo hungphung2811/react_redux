@@ -28,7 +28,6 @@ function HomePage() {
     return (
         <div className='px-16'>
             <Banner />
-
             <Text
             className='text-center mt-20'
             >
