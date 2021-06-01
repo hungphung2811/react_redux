@@ -4,8 +4,8 @@ function FormInput({ type, name, id, reg, error, ...props }) {
     return (
         <>
             <input
-                type={type} name={name} id={id} autoComplete="given-name"
-                className={`${error ? 'border-red-300' : 'border-gray-300'} mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md`}
+                type={type} name={name} id={id}
+                className={`${error ? 'border-2 border-red-300' : 'border-gray-300'} mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm rounded-md`}
                 {...reg}
                 {...props}
             />
