@@ -1,8 +1,8 @@
 import React from 'react'
 
-function ImageItem({ url, alt, ...props }) {
+function ImageItem({ url, alt,className, ...props }) {
     return (
-        <img {...props} src={url} alt={alt} className='w-full' />
+        <img {...props} src={url} alt={alt} className={`${className} w-full`} />
     )
 }
 

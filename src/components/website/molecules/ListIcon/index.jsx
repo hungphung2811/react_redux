@@ -1,9 +1,14 @@
+import ImageItem from 'components/website/atoms/ImageItem';
 import UserNav from 'components/website/atoms/UserNav';
 import React from 'react';
 import { FaInstagram } from 'react-icons/fa';
 import { FiFacebook, FiSearch, FiShoppingCart, FiTwitter } from 'react-icons/fi';
 
 function ListIcon() {
+    const getUserFronLocal = () => {
+        return JSON.parse(localStorage.getItem('user')) || undefined;
+    }
+    const user = getUserFronLocal();
     return (
         <ul className='flex items-center'>
             <li className='px-3 text-gray-500'>
@@ -28,7 +33,13 @@ function ListIcon() {
                 <FiShoppingCart cursor='pointer' />
             </li>
             <li>
-                <UserNav />
+                {user ?
+                    <ImageItem
+                        className='w-5 h-5 ml-2'
+                        url={user.user.avatar}
+                        alt='user'
+                    />
+                    : <UserNav />}
             </li>
         </ul>
     )

@@ -5,11 +5,11 @@ import Text from 'components/website/atoms/Text';
 import FormGroup from 'components/website/molecules/FormGroup';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-
+import { useHistory } from 'react-router-dom';
 
 function Register() {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-
+    const history = useHistory();
     const [errorsState, setErrorsState] = useState({
         name: '',
         email: '',
@@ -26,30 +26,40 @@ function Register() {
             [key]: value
         }
     }
+
+    const saveUserInLocal = (dataUser, next) => {
+        if (typeof window !== undefined) {
+            localStorage.setItem('user', JSON.stringify(dataUser));
+        }
+        if (typeof next === 'function') {
+            next();
+        }
+    }
     const onhandleSubmit = (data, e) => {
         setPending(true);
         (async () => {
             try {
-                const newUser = await AuthApi.signIn(data);
+                const dataUser = await AuthApi.signIn(data);
                 setErrorsState(() => {
                     return changeState('', '');
                 })
-                console.log(newUser);
+                console.log(dataUser);
                 setPending(false);
                 setSuccess(true)
                 reset();
+                saveUserInLocal(dataUser, () => {
+                    history.push('/home')
+                })
             } catch (error) {
                 setPending(false);
                 setSuccess(false)
-                console.log(error.response.data);
-                // return
                 const { errorEmail, errorPassword } = error.response.data;
                 if (errorEmail) {
                     setErrorsState(() => {
                         return changeState('email', errorEmail);
                     })
                 } else if (errorPassword) {
-                    setErrorsState(()=>{
+                    setErrorsState(() => {
                         return changeState('password', errorPassword);
                     })
                 }
