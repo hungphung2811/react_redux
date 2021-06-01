@@ -33,11 +33,8 @@ function Register() {
         (async () => {
             try {
                 const newUser = await AuthApi.signUp(data);
-                setErrorsState({
-                    ...errorsState,
-                    name: '',
-                    email: '',
-                    password: ''
+                setErrorsState(() => {
+                    return changeState('', '');
                 })
                 setPending(false);
                 setSuccess(true)
@@ -54,7 +51,9 @@ function Register() {
                         return changeState('email', errorEmail);
                     })
                 } else if (errorPassword) {
-                    return changeState('password', errorPassword);
+                    setErrorsState(()=>{
+                        return changeState('password', errorPassword);
+                    })
                 }
             }
         })();

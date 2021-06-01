@@ -5,11 +5,10 @@ import Text from 'components/website/atoms/Text';
 import FormGroup from 'components/website/molecules/FormGroup';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
 
 
-function Login() {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+function Register() {
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     const [errorsState, setErrorsState] = useState({
         name: '',
@@ -17,41 +16,42 @@ function Login() {
         password: ''
     })
     const [success, setSuccess] = useState(false);
-    const [loading, setLoading] = useState(false);
+    const [pending, setPending] = useState(false);
 
     const changeState = (key, value) => {
         return {
             ...errorsState,
-            name: '',
             email: '',
             password: '',
             [key]: value
         }
     }
     const onhandleSubmit = (data, e) => {
+        setPending(true);
         (async () => {
             try {
-                const newUser = await AuthApi.signUp(data);
-                setErrorsState({
-                    ...errorsState,
-                    name: '',
-                    email: '',
-                    password: ''
+                const newUser = await AuthApi.signIn(data);
+                setErrorsState(() => {
+                    return changeState('', '');
                 })
+                console.log(newUser);
+                setPending(false);
                 setSuccess(true)
-                e.target.reset();
+                reset();
             } catch (error) {
-                const { errorName, errorEmail, errorPassword } = error.response.data.error;
-                if (errorName) {
-                    setErrorsState(() => {
-                        return changeState('name', errorName);
-                    })
-                } else if (errorEmail) {
+                setPending(false);
+                setSuccess(false)
+                console.log(error.response.data);
+                // return
+                const { errorEmail, errorPassword } = error.response.data;
+                if (errorEmail) {
                     setErrorsState(() => {
                         return changeState('email', errorEmail);
                     })
                 } else if (errorPassword) {
-                    return changeState('password', errorPassword);
+                    setErrorsState(()=>{
+                        return changeState('password', errorPassword);
+                    })
                 }
             }
         })();
@@ -59,16 +59,19 @@ function Login() {
 
     return (
         <>
-            <div className="mt-10 sm:mt-14 mx-auto w-[500px]">
+            <div className="mt-10 sm:mt-14 mx-auto w-[600px]">
                 <Text className={`${success ? 'block' : 'hidden'} px-2 py-1 mb-2 rounded-sm bg-green-400 bg-opacity-80 font-medium text-xs`}>
-                    ban dang dang ky thanh cong
-                            <span className='underline'>
-                        <Link to='/buyer/login'> dawng nhap</Link>
-                    </span>
+                    đăng nhập thành công
                 </Text>
-                <form onSubmit={handleSubmit(onhandleSubmit)}>
-                    <div className="shadow overflow-hidden sm:rounded-md border-b-0 border border-gray-100">
-                        <div className="px-4 py-2 bg-white sm:p-6">
+
+                <div className='shadow overflow-hidden sm:rounded-md border-b-0 border border-gray-100 px-4 py-5 bg-white sm:p-6'>
+                    <div>
+                        <Text className='text-2xl mb-5'>
+                            Đăng nhập
+                        </Text>
+                    </div>
+                    <form onSubmit={handleSubmit(onhandleSubmit)}>
+                        <div className="">
                             <div>
                                 <FormGroup
                                     type='email'
@@ -113,17 +116,17 @@ function Login() {
                                 twCustom={true}
                                 classname='shadow-sm text-sm font-medium rounded-sm hover:bg-yellow-700 transition-colors'
                             >
-                                Login
+                                Register
                                 </Button>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
-            <div className='hidden'>
+            <div className={`${pending ? 'block' : 'hidden'}`}>
                 <Loading />
             </div>
         </>
     )
 }
 
-export default Login
+export default Register
