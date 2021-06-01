@@ -10,7 +10,7 @@ function Banner() {
                     <SectionInfo />
                 </div>
             </div>
-            <div>
+            <div className='animate-wiggle'>
                 <ImageItem
                     url={'https://cdn.jevelin.shufflehound.com/wp-content/uploads/sites/42/2018/03/inside-weather-E5lK_COkD2E-unsplash-copy.jpg'}
                     alt={'banner'}

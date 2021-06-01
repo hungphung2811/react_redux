@@ -1,5 +1,8 @@
 import AuthApi from 'api/authApi';
+import Button from 'components/website/atoms/Button';
 import FormInput from 'components/website/atoms/FormInput';
+import Text from 'components/website/atoms/Text';
+import FormGroup from 'components/website/molecules/FormGroup';
 import React, { useState } from 'react'
 
 import { useForm } from 'react-hook-form';
@@ -17,11 +20,12 @@ function Register() {
 
     const onhandleSubmit = (data, e) => {
         console.log(data);
-        return;
+        // return;  
         (async () => {
             try {
                 const newUser = await AuthApi.signUp(data);
                 setErrorsState({
+                    ...errorsState,
                     name: '',
                     email: '',
                     password: ''
@@ -29,7 +33,6 @@ function Register() {
                 setSuccess(true)
                 e.target.reset();
             } catch (error) {
-                console.log(error.response.data.error);
                 const { errorName, errorEmail, errorPassword } = error.response.data.error;
                 if (errorName) {
                     setErrorsState({
@@ -57,14 +60,14 @@ function Register() {
         })();
     }
 
-   
+
     return (
         <div className="mt-10 sm:mt-0 shadow-sm">
             <div className="mx-auto px-10 w-2/3">
                 <div className="mt-5 md:mt-0">
                     <div className={`${success ? 'block' : 'hidden'} px-2 py-1 mb-2 rounded-sm bg-green-400 bg-opacity-80 font-medium text-xs`}>
                         ban dang dang ky thanh cong
-                         <span className='underline'>
+                        <span className='underline'>
                             <Link to='/buyer/login'> dawng nhap</Link>
                         </span>
                     </div>
@@ -72,41 +75,68 @@ function Register() {
                         <div className="shadow overflow-hidden sm:rounded-md">
                             <div className="px-4 py-5 bg-white sm:p-6">
                                 <div>
-                                    <div>
-                                        <label htmlFor="name" className="block text-sm font-medium text-gray-700">name</label>
-                                        {/* <input
-                                            type="text" name="name" id="name" autoComplete="given-name"
-                                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                            // {...register('name')}
-                                            ref={register('name')}
-                                        /> */}
-                                        <FormInput reg={{...register('name')}}/>
+                                    <FormGroup
+                                        type='text'
+                                        name='name'
+                                        id='name'
+                                        label='Name'
+                                        require={true}
+                                        error={errorsState.name}
+                                        reg={{ ...register('name') }}
+                                    />
+                                    <Text
+                                        variant='span'
+                                        className='mt-2 text-red-500 text-xs font-body font-medium'
+                                    >
                                         {errorsState.name}
-                                    </div>
-                                    <div className='mt-5'>
-                                        <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email address</label>
-                                        <input type="text" name="email" id="email"
-                                            autoComplete="email"
-                                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                            {...register('email')}
-                                        />
+                                    </Text>
+                                </div>
+                                <div className='mt-5'>
+                                    <FormGroup
+                                        type='email'
+                                        name='email'
+                                        id='email'
+                                        label='Email'
+                                        require={true}
+                                        error={errorsState.email}
+                                        reg={{ ...register('email') }}
+                                    />
+                                    <Text
+                                        variant='span'
+                                        className='mt-2 text-red-500 text-xs font-body font-medium'
+                                    >
                                         {errorsState.email}
-                                    </div>
-                                    <div className='mt-5'>
-                                        <label htmlFor="password" className="block text-sm font-medium text-gray-700">password</label>
-                                        <input type="text" name="password" id="password"
-                                            autoComplete="email"
-                                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                            {...register('password')}
-                                        />
+                                    </Text>
+                                </div>
+                                <div className='mt-5'>
+                                    <FormGroup
+                                        type='password'
+                                        name='password'
+                                        id='password'
+                                        label='Password'
+                                        require={true}
+                                        error={errorsState.password}
+                                        reg={{ ...register('password') }}
+                                    />
+                                    <Text
+                                        variant='span'
+                                        className='mt-2 text-red-500 text-xs font-body font-medium'
+                                    >
                                         {errorsState.password}
-                                    </div>
+                                    </Text>
                                 </div>
                             </div>
-                            <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                                <button type="submit" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                    Save
-                                </button>
+                            <div className="px-4 py-3 text-center sm:px-6">
+                                <Button
+                                    variant='btn-tag'
+                                    size='medium'
+                                    color='text-white'
+                                    bg='bg-indigo-600'
+                                    twCustom={true}
+                                    classname='shadow-sm text-sm font-medium rounded-sm transition-colors'
+                                >
+                                    Register
+                                </Button>
                             </div>
                         </div>
                     </form>
