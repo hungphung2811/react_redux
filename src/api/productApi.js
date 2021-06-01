@@ -5,8 +5,12 @@ const ProductApi = {
         const url = '/products'
         return axiosClient.get(url)
     },
-    getOne() {
-
+    getOne(id) {
+        const url = `products/${id}`;
+        return axiosClient.get(url);
+    }, getByCategory(categoryId) {
+        const url = `/products/?categoryId=${categoryId}`
+        return axiosClient.get(url)
     }
 }
 

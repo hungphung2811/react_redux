@@ -32,7 +32,7 @@ function NavWebsite() {
             {
                 listCategories.map((category, index) => {
                     return <li className='px-3' key={index}>
-                        <NavItemWebsite to={`/category/${category.id}`}>
+                        <NavItemWebsite to={`/category/${category._id}`}>
                             {category.cateName}
                         </NavItemWebsite>
                     </li>

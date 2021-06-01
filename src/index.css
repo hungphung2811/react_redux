@@ -734,6 +734,9 @@ select{
 .ml-1{
 	margin-left: 0.25rem;
 }
+.ml-2{
+	margin-left: 0.5rem;
+}
 .mb-8{
 	margin-bottom: 2rem;
 }
@@ -755,14 +758,11 @@ select{
 .mt-5{
 	margin-top: 1.25rem;
 }
-.mb-20{
-	margin-bottom: 5rem;
+.mt-3{
+	margin-top: 0.75rem;
 }
-.mb-10{
-	margin-bottom: 2.5rem;
-}
-.ml-2{
-	margin-left: 0.5rem;
+.ml-\[50px\]{
+	margin-left: 50px;
 }
 .block{
 	display: block;
@@ -779,31 +779,40 @@ select{
 .hidden{
 	display: none;
 }
-.h-4{
-	height: 1rem;
-}
 .h-5{
 	height: 1.25rem;
+}
+.h-24{
+	height: 6rem;
+}
+.h-\[265px\]{
+	height: 265px;
 }
 .w-full{
 	width: 100%;
 }
-.w-\[500px\]{
-	width: 500px;
+.w-5{
+	width: 1.25rem;
+}
+.w-24{
+	width: 6rem;
 }
 .w-\[600px\]{
 	width: 600px;
 }
-.w-4{
-	width: 1rem;
+.w-auto{
+	width: auto;
 }
-.w-5{
-	width: 1.25rem;
+.w-\[300px\]{
+	width: 300px;
+}
+.w-\[265px\]{
+	width: 265px;
 }
 @keyframes wiggle{
 
 	0%{
-		transform: rotate(10deg) translate(100px,0);
+		transform: rotate(30deg) translate(200px,50px);
 	}
 
 	100%{
@@ -819,6 +828,12 @@ select{
 .grid-cols-2{
 	grid-template-columns: repeat(2, minmax(0, 1fr));
 }
+.grid-cols-4{
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.grid-cols-3{
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
 .items-center{
 	align-items: center;
 }
@@ -827,6 +842,15 @@ select{
 }
 .justify-between{
 	justify-content: space-between;
+}
+.gap-10{
+	gap: 2.5rem;
+}
+.gap-\[35px\]{
+	gap: 35px;
+}
+.gap-\[30px\]{
+	gap: 30px;
 }
 .overflow-hidden{
 	overflow: hidden;
@@ -901,11 +925,18 @@ select{
 	--tw-bg-opacity: 1;
 	background-color: rgba(79, 70, 229, var(--tw-bg-opacity));
 }
+.bg-blue-400{
+	--tw-bg-opacity: 1;
+	background-color: rgba(96, 165, 250, var(--tw-bg-opacity));
+}
 .bg-opacity-50{
 	--tw-bg-opacity: 0.5;
 }
 .bg-opacity-80{
 	--tw-bg-opacity: 0.8;
+}
+.object-cover{
+	object-fit: cover;
 }
 .px-16{
 	padding-left: 4rem;
@@ -974,6 +1005,14 @@ select{
 .py-5{
 	padding-top: 1.25rem;
 	padding-bottom: 1.25rem;
+}
+.px-32{
+	padding-left: 8rem;
+	padding-right: 8rem;
+}
+.px-\[160px\]{
+	padding-left: 160px;
+	padding-right: 160px;
 }
 .text-center{
 	text-align: center;

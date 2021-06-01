@@ -8,11 +8,11 @@ function TemplateWebsite({ children }) {
             <div className='px-16'>
                 <Header />
             </div>
-            <div className='px-16'>
+            <div className=''>
                 {children}
             </div>
-            <div className='text-center text-yellow-600'>
-                <Footer/>
+            <div className=' px-16 text-center text-yellow-600'>
+                <Footer />
             </div>
         </>
     )
