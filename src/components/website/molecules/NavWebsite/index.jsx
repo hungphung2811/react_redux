@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 function NavWebsite() {
     const { listCategories } = useSelector(state => state.category);
+    const { amount ,listCart } = useSelector(state => state.cart);
     const dispatch = useDispatch();
     useEffect(() => {
         (async () => {
@@ -28,7 +29,10 @@ function NavWebsite() {
             <li className='px-3'>
                 <NavItemWebsite to='/shop'>shop</NavItemWebsite>
             </li>
-
+            <li className='px-3'>
+                {console.log({listCart,amount})}
+                {amount}
+            </li>
             {
                 listCategories.map((category, index) => {
                     return <li className='px-3' key={index}>

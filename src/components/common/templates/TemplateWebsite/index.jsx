@@ -11,9 +11,7 @@ function TemplateWebsite({ children }) {
             <div className=''>
                 {children}
             </div>
-            <div className=' px-16 text-center text-yellow-600'>
-                <Footer />
-            </div>
+            <Footer />
         </>
     )
 }
