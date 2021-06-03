@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 function Breadcrumb({ children }) {
     return (
-        <div className="container flex px-32 justify-between items-center mx-auto py-10 text-center bg-gray-100">
+        <div className="container flex px-32 justify-between items-center mx-auto py-8 text-center bg-gray-100">
             <Text variant='h3' className="text-xl font-mono font-semibold capitalize">{children}</Text>
             <div className='flex items-center'>
                 <Text variant='span'>
