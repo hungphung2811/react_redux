@@ -1,5 +1,6 @@
 import TemplateAuth from 'components/common/templates/TemplateAuth'
 import TemplateWebsite from 'components/common/templates/TemplateWebsite'
+import About from 'components/website/pages/About'
 import Login from 'components/website/pages/auth/Login'
 import Logout from 'components/website/pages/auth/Logout'
 import Register from 'components/website/pages/auth/Register'
@@ -45,7 +46,7 @@ function Routes() {
                                 <BlogDetailPage />
                             </Route>
                             <Route path='/about'>
-                                <HomePage />
+                                <About />
                             </Route>
                             <Route exact path='/category/:id'>
                                 <CategoryPage />

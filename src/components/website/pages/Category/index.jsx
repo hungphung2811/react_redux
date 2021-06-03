@@ -4,6 +4,7 @@ import Loading from 'components/common/molecules/Loading';
 import Button from 'components/website/atoms/Button';
 import ImageItem from 'components/website/atoms/ImageItem';
 import Text from 'components/website/atoms/Text';
+import Breadcrumb from 'components/website/molecules/Breadcrumb';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router'
@@ -13,7 +14,7 @@ function Category() {
     const { id } = useParams();
 
     const dispatch = useDispatch()
-    const {listCart} = useSelector(state => state.cart);
+    const { listCart } = useSelector(state => state.cart);
 
     const [products, setProducts] = useState({
         list: [],
@@ -55,7 +56,8 @@ function Category() {
     }
     return (
         <>
-            <div className='px-[160px]'>
+            <Breadcrumb>category</Breadcrumb>
+            <div className='px-[160px] mt-10'>
                 <div className='flex'>
 
                     <div className='grid grid-cols-3 gap-[30px]'>
@@ -89,8 +91,8 @@ function Category() {
                             </div>)
                         })}
                     </div>
-                    <div className='w-[300px] ml-[50px] bg-blue-400'>
-
+                    <div className='w-[300px] ml-[50px] bg-blue-500 z-10 sticky top-[105px] h-[100px]'>
+                        side bar category
                     </div>
                 </div>
             </div>
