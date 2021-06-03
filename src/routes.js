@@ -4,6 +4,7 @@ import Login from 'components/website/pages/auth/Login'
 import Logout from 'components/website/pages/auth/Logout'
 import Register from 'components/website/pages/auth/Register'
 import BlogPage from 'components/website/pages/Blog'
+import BlogDetailPage from 'components/website/pages/BlogDetailPage'
 import CategoryPage from 'components/website/pages/Category'
 import DetailPage from 'components/website/pages/DetailPage'
 import HomePage from 'components/website/pages/HomePage'
@@ -37,8 +38,11 @@ function Routes() {
                             <Route path='/home'>
                                 <HomePage />
                             </Route>
-                            <Route path='/blog'>
+                            <Route exact path='/blog'>
                                 <BlogPage />
+                            </Route>
+                            <Route exact path='/blog/:id'>
+                                <BlogDetailPage />
                             </Route>
                             <Route path='/about'>
                                 <HomePage />

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Breadcrumb from 'components/website/molecules/Breadcrumb'
 import BlogApi from 'api/blogApi';
 import BlogSection from 'components/website/organisms/BlogSection';
+import Loading from 'components/common/molecules/Loading';
 
 function BlogPage() {
     const [blogs, setBlogs] = useState({
@@ -10,38 +11,47 @@ function BlogPage() {
         erroring: ''
     })
     useEffect(() => {
-        (async () => {
+        setBlogs({
+            ...blogs,
+            loading: true
+        });
+
+        ; (async () => {
             const dataBlogs = await BlogApi.getAll();
             setBlogs({
                 ...blogs,
-                listBlogs: [...blogs.listBlogs, ...dataBlogs]
+                listBlogs: [...blogs.listBlogs, ...dataBlogs],
+                loading: false
             })
         })();
     }, [])
 
     return (
-        <div>
-            <Breadcrumb>blog</Breadcrumb>
+        <>
+            <div className={`${blogs.loading ? 'block' : 'hidden '}`}>
+                < Loading />
+            </div>
+            <div>
+                <Breadcrumb>blog</Breadcrumb>
 
-
-            <div className="grid grid-cols-7 gap-7 md:px-8 lg:px-16 xl:px-32 mt-10">
-                <div className="col-span-5">
-                    {
-                        blogs.listBlogs.map((blog, index) => {
-                            return (
-                                <div key={index} className="mb-5 pb-14 border-b border-gray-200">
-                                    <BlogSection blog={blog} />
-                                </div>
-                            )
-                        })
-                    }
-                </div>
-                <div className="col-span-2">
-                    side bar
+                <div className="flex justify-center md:px-8 container mx-auto lg:px-16 xl:px-32 mt-10">
+                    <div className="mr-7">
+                        {
+                            blogs.listBlogs.map((blog, index) => {
+                                return (
+                                    <div key={index} className="mb-5 pb-14 border-b border-gray-200">
+                                        <BlogSection blog={blog} />
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+                    <div className="min-w-[300px] bg-blue-500 sticky top-[105px] h-[100px] z-10">
+                        side bar
+                    </div>
                 </div>
             </div>
-        </div>
-
+        </>
     )
 }
 

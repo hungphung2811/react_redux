@@ -4,10 +4,10 @@ import Header from 'components/website/organisms/Header'
 function TemplateWebsite({ children }) {
     return (
         <>
-            <div className={`shadow-sm px-16 sticky top-0 bg-white`}>
+            <div className={`shadow-sm px-16 sticky top-0 z-50 bg-white`}>
                 <Header />
             </div>
-            <div className=''>
+            <div>
                 {children}
             </div>
             <Footer />

@@ -772,6 +772,15 @@ select{
 .top-16{
 	top: 4rem;
 }
+.top-\[105px\]{
+	top: 105px;
+}
+.z-10{
+	z-index: 10;
+}
+.z-50{
+	z-index: 50;
+}
 .col-span-5{
 	grid-column: span 5 / span 5;
 }
@@ -825,6 +834,9 @@ select{
 .mt-5{
 	margin-top: 1.25rem;
 }
+.mr-7{
+	margin-right: 1.75rem;
+}
 .box-border{
 	box-sizing: border-box;
 }
@@ -855,6 +867,9 @@ select{
 .h-\[265px\]{
 	height: 265px;
 }
+.h-\[100px\]{
+	height: 100px;
+}
 .w-full{
 	width: 100%;
 }
@@ -878,6 +893,12 @@ select{
 }
 .w-\[18px\]{
 	width: 18px;
+}
+.min-w-\[300px\]{
+	min-width: 300px;
+}
+.max-w-\[300px\]{
+	max-width: 300px;
 }
 .transform{
 	--tw-translate-x: 0;
