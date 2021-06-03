@@ -3,6 +3,7 @@ import TemplateWebsite from 'components/common/templates/TemplateWebsite'
 import Login from 'components/website/pages/auth/Login'
 import Logout from 'components/website/pages/auth/Logout'
 import Register from 'components/website/pages/auth/Register'
+import BlogPage from 'components/website/pages/Blog'
 import CategoryPage from 'components/website/pages/Category'
 import DetailPage from 'components/website/pages/DetailPage'
 import HomePage from 'components/website/pages/HomePage'
@@ -36,6 +37,12 @@ function Routes() {
                             <Route path='/home'>
                                 <HomePage />
                             </Route>
+                            <Route path='/blog'>
+                                <BlogPage />
+                            </Route>
+                            <Route path='/about'>
+                                <HomePage />
+                            </Route>
                             <Route exact path='/category/:id'>
                                 <CategoryPage />
                             </Route>
@@ -48,9 +55,6 @@ function Routes() {
                         </Switch>
                     </TemplateWebsite>
                 </Route>
-
-
-
             </Switch>
         </Router>
     )

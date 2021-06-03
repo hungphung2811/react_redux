@@ -9,7 +9,7 @@ function CartPreView() {
     return (
         <>
             {listCart.map((cart, index) => {
-                return <li className='px-3 py-1 flex justify-between items-center'>
+                return <li key={index} className='px-3 py-1 flex justify-between items-center'>
                     <ImageItem
                         className='w-8 object-contain'
                         url={cart.image}

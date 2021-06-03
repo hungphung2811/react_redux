@@ -42,7 +42,7 @@ function ListIcon() {
                     <FiShoppingCart cursor='pointer' />
                     <Text
                         variant='span'
-                        className='absolute w-[16px] h-[18px] text-center top-0 right-0 bg-yellow-600 text-[12px] px-0.5 cursor-pointer text-white font-medium font-body rounded-lg transform -translate-x-1.5 -translate-y-2'
+                        className='absolute w-[18px] h-[18px] text-center top-0 right-0 bg-yellow-600 text-[12px] cursor-pointer text-white font-medium font-body rounded-lg transform -translate-x-1 -translate-y-2'
                     >{amount}
                     </Text>
                 </div>

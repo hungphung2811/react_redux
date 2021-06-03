@@ -37,6 +37,12 @@ function NavWebsite() {
                     </li>
                 })
             }
+            <li className='px-3'>
+                <NavItemWebsite to='/blog'>blog</NavItemWebsite>
+            </li>
+            <li className='px-3'>
+                <NavItemWebsite to='/about'>about</NavItemWebsite>
+            </li>
         </ul>
     )
 }

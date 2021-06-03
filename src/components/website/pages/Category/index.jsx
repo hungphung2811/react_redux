@@ -67,7 +67,7 @@ function Category() {
                                         alt={product.name}
                                         className='w-[265px] h-[265px] object-cover'
                                     />
-                                    <Text heading='h2'
+                                    <Text variant='h2'
                                         className='mt-3 text-[15px] font-semibold font-body'
                                     >
                                         {product.name}
