@@ -1,4 +1,4 @@
-const { ADD_TO_CART } = require("constants/actionTypeCart");
+const { ADD_TO_CART, GET_TOTAL } = require("constants/actionTypeCart");
 
 const initialState = {
     listCart: [],
@@ -41,12 +41,10 @@ const cartReducer = (state = initialState, action) => {
                     }
                 }
             }
-        case 'GET-TOTAL':
+        case GET_TOTAL:
             let { total, amount } = state.listCart.reduce((cartTotal, cartItem) => {
                 const { price, amount } = cartItem
                 const itemTotal = parseFloat(price) * parseInt(amount)
-                // console.log('==============');
-                // console.log({ cartTotal, cartItem });
                 cartTotal.total += itemTotal
                 cartTotal.amount += parseInt(amount)
                 return cartTotal

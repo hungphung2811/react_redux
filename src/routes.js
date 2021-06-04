@@ -1,12 +1,12 @@
 import TemplateAuth from 'components/common/templates/TemplateAuth'
 import TemplateWebsite from 'components/common/templates/TemplateWebsite'
-import About from 'components/website/pages/About'
+import AboutPage from 'components/website/pages/AboutPage'
 import Login from 'components/website/pages/auth/Login'
 import Logout from 'components/website/pages/auth/Logout'
 import Register from 'components/website/pages/auth/Register'
-import BlogPage from 'components/website/pages/Blog'
 import BlogDetailPage from 'components/website/pages/BlogDetailPage'
-import CategoryPage from 'components/website/pages/Category'
+import BlogPage from 'components/website/pages/BlogPage'
+import CategoryPage from 'components/website/pages/CategoryPage'
 import DetailPage from 'components/website/pages/DetailPage'
 import HomePage from 'components/website/pages/HomePage'
 import React from 'react'
@@ -46,7 +46,7 @@ function Routes() {
                                 <BlogDetailPage />
                             </Route>
                             <Route path='/about'>
-                                <About />
+                                <AboutPage />
                             </Route>
                             <Route exact path='/category/:id'>
                                 <CategoryPage />
