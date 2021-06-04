@@ -1,3 +1,4 @@
+import { getTotalCart } from 'actions/cartActions';
 import { addToCart } from 'actions/cartActions';
 import ProductApi from 'api/productApi';
 import Loading from 'components/common/molecules/Loading';
@@ -48,7 +49,7 @@ function Category() {
     }, [id])
 
     useEffect(() => {
-        dispatch({ type: 'GET-TOTAL' })
+        dispatch(getTotalCart())
     }, [listCart])
 
     const handleAddToCart = (product) => {
