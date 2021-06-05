@@ -1,3 +1,4 @@
+import { saveCartToLocalStorage } from 'actions/cartActions';
 import { getTotalCart } from 'actions/cartActions';
 import { addToCart } from 'actions/cartActions';
 import ProductApi from 'api/productApi';
@@ -16,6 +17,7 @@ function Category() {
 
     const dispatch = useDispatch()
     const { listCart } = useSelector(state => state.cart);
+    const cart = useSelector(state => state.cart);
 
     const [products, setProducts] = useState({
         list: [],
@@ -49,11 +51,13 @@ function Category() {
     }, [id])
 
     useEffect(() => {
-        dispatch(getTotalCart())
+        dispatch(getTotalCart());
+        dispatch(saveCartToLocalStorage(cart));
     }, [listCart])
 
     const handleAddToCart = (product) => {
         dispatch(addToCart(product))
+        dispatch(saveCartToLocalStorage(cart))
     }
     return (
         <>
