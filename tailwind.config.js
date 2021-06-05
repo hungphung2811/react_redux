@@ -24,7 +24,14 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      display: ["group-hover"],
+      margin: ["group-hover"],
+      visibility: ["group-hover"],
+      scale: ["group-hover"],
+      overflow: ["group-hover"],
+      translate: ["group-hover"]
+    },
   },
   plugins: [
     require('@tailwindcss/forms'),

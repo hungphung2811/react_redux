@@ -1,3 +1,7 @@
+import CategoryDashboardPage from 'components/admin/pages/CategoryDashboardPage'
+import DashBoardPage from 'components/admin/pages/DashboardPage'
+import ProductDashboardPage from 'components/admin/pages/ProductDashboardPage'
+import TemplateAdmin from 'components/common/templates/TemplateAdmin'
 import TemplateAuth from 'components/common/templates/TemplateAuth'
 import TemplateWebsite from 'components/common/templates/TemplateWebsite'
 import AboutPage from 'components/website/pages/AboutPage'
@@ -16,7 +20,28 @@ function Routes() {
     return (
         <Router>
             <Switch>
-                <Route path='/buyer/:path?'>
+
+                <Route path='/admin/:path?'>
+                    <TemplateAdmin>
+                        <Switch>
+                            <Redirect exact from='/admin' to='/admin/dashboard' />
+                            <Route exact path='/admin/dashboard'>
+                                <DashBoardPage />
+                            </Route>
+                            <Route exact path='/admin/product'>
+                                <ProductDashboardPage />
+                            </Route>
+                            <Route exact path='/admin/category'>
+                                <CategoryDashboardPage />
+                            </Route>
+                            <Route path='*'>
+                                404 page website
+                            </Route>
+                        </Switch>
+                    </TemplateAdmin>
+                </Route>
+
+                <Route exact path='/buyer/:path?'>
                     <TemplateAuth>
                         <Switch>
                             <Route path='/buyer/register'>
@@ -28,7 +53,6 @@ function Routes() {
                             <Route path='/buyer/logout'>
                                 <Logout />
                             </Route>
-
                         </Switch>
                     </TemplateAuth>
                 </Route>
@@ -36,7 +60,7 @@ function Routes() {
                     <TemplateWebsite>
                         <Switch>
                             <Redirect exact from="/" to="/home" />
-                            <Route path='/home'>
+                            <Route exact path='/home'>
                                 <HomePage />
                             </Route>
                             <Route exact path='/blog'>
