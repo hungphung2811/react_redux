@@ -5,9 +5,9 @@ import React from 'react'
 function TemplateAdmin({ children }) {
     return (
         <>
-            <div class="grid grid-cols-12 container mx-auto">
+            <div className="grid grid-cols-12 container mx-auto">
                 <SideBarAdmin />
-                <main class="col-span-10">
+                <main className="col-span-10">
                     <HeaderAdmin />
                     <div>
                         {children}

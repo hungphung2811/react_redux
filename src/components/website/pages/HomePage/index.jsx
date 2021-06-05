@@ -1,4 +1,4 @@
-import { getProducts } from 'actions/product';
+import { getProducts } from 'actions/productActions';
 import ProductApi from 'api/productApi';
 import Text from 'components/common/atoms/Text';
 import Banner from 'components/website/organisms/Banner';

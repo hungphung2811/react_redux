@@ -1,11 +1,10 @@
-import Text from 'components/common/atoms/Text'
-import React from 'react'
-import { FiHome, FiShoppingCart } from 'react-icons/fi';
+import SideBarItem from 'components/admin/molecules/SidebarItem';
+import React from 'react';
 import { BiLayer } from 'react-icons/bi';
+import { BsFileEarmarkText, BsNewspaper, BsPeople } from 'react-icons/bs';
+import { FiHome, FiShoppingCart } from 'react-icons/fi';
 import { MdReport } from 'react-icons/md';
-import { BsFileEarmarkText, BsNewspaper, BsPeople } from 'react-icons/bs'
-import { Link } from 'react-router-dom'
-import SideBarItem from 'components/admin/molecules/SidebarItem'
+import { Link } from 'react-router-dom';
 
 function SideBarAdmin() {
     return (
