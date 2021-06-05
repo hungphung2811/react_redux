@@ -1,7 +1,7 @@
 import { changeStatusLogin } from 'actions/authActions';
 import AuthApi from 'api/authApi';
-import ImageItem from 'components/website/atoms/ImageItem';
-import Text from 'components/website/atoms/Text';
+import ImageItem from 'components/common/atoms/ImageItem';
+import Text from 'components/common/atoms/Text';
 import UserNav from 'components/website/molecules/UserNav';
 import React, { useState } from 'react';
 import { FaInstagram } from 'react-icons/fa';

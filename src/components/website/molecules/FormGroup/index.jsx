@@ -1,5 +1,5 @@
-import FormInput from 'components/website/atoms/FormInput'
-import FormLabel from 'components/website/atoms/FormLabel'
+import FormInput from 'components/common/atoms/FormInput'
+import FormLabel from 'components/common/atoms/FormLabel'
 import React from 'react'
 
 function FormGroup({ label, type, name, id, reg, error, require, ...props }) {

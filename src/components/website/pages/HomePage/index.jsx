@@ -1,6 +1,6 @@
 import { getProducts } from 'actions/product';
 import ProductApi from 'api/productApi';
-import Text from 'components/website/atoms/Text';
+import Text from 'components/common/atoms/Text';
 import Banner from 'components/website/organisms/Banner';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

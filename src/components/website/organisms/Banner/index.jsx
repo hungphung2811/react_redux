@@ -1,4 +1,4 @@
-import ImageItem from 'components/website/atoms/ImageItem'
+import ImageItem from 'components/common/atoms/ImageItem'
 import SectionInfo from 'components/website/molecules/SectionInfo'
 import React from 'react'
 

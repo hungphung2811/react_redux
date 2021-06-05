@@ -3,9 +3,9 @@ import { getTotalCart } from 'actions/cartActions';
 import { addToCart } from 'actions/cartActions';
 import ProductApi from 'api/productApi';
 import Loading from 'components/common/molecules/Loading';
-import Button from 'components/website/atoms/Button';
-import ImageItem from 'components/website/atoms/ImageItem';
-import Text from 'components/website/atoms/Text';
+import Button from 'components/common/atoms/Button';
+import ImageItem from 'components/common/atoms/ImageItem';
+import Text from 'components/common/atoms/Text';
 import Breadcrumb from 'components/website/molecules/Breadcrumb';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';

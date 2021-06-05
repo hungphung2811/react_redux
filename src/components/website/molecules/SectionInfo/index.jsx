@@ -1,5 +1,5 @@
-import Button from 'components/website/atoms/Button'
-import Text from 'components/website/atoms/Text'
+import Button from 'components/common/atoms/Button'
+import Text from 'components/common/atoms/Text'
 import React from 'react'
 
 function SectionInfo() {

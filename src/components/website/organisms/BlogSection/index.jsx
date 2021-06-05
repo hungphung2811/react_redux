@@ -1,5 +1,5 @@
-import ImageItem from 'components/website/atoms/ImageItem'
-import Text from 'components/website/atoms/Text'
+import ImageItem from 'components/common/atoms/ImageItem'
+import Text from 'components/common/atoms/Text'
 import SubInfoBlog from 'components/website/molecules/SubInfoBlog'
 import React from 'react'
 import { Link } from 'react-router-dom'

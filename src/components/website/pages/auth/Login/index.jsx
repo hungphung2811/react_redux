@@ -1,8 +1,8 @@
 import { changeStatusLogin } from 'actions/authActions';
 import AuthApi from 'api/authApi';
 import Loading from 'components/common/molecules/Loading';
-import Button from 'components/website/atoms/Button';
-import Text from 'components/website/atoms/Text';
+import Button from 'components/common/atoms/Button';
+import Text from 'components/common/atoms/Text';
 import FormGroup from 'components/website/molecules/FormGroup';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';

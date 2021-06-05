@@ -1,5 +1,5 @@
-import ImageItem from 'components/website/atoms/ImageItem'
-import Text from 'components/website/atoms/Text'
+import ImageItem from 'components/common/atoms/ImageItem'
+import Text from 'components/common/atoms/Text'
 import React from 'react'
 import { FiCheck, FiEye } from 'react-icons/fi'
 import { useSelector } from 'react-redux'

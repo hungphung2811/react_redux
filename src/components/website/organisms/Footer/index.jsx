@@ -1,4 +1,4 @@
-import Text from 'components/website/atoms/Text'
+import Text from 'components/common/atoms/Text'
 import React from 'react'
 
 function Footer() {
