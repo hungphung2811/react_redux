@@ -1,6 +1,6 @@
 import { getFromLocalStorage, setToLocalStorage } from "service/utilities/localStorage";
 
-const { ADD_TO_CART, GET_TOTAL, SAVE_CART_TO_LOCAL } = require("service/constants/actionTypeCart");
+const { ADD_TO_CART, GET_TOTAL, SAVE_CART_TO_LOCAL } = require("service/constants/actionTypeCartConstant");
 
 const initialState = getFromLocalStorage('cart') || {
     listCart: [],
@@ -56,7 +56,7 @@ const cartReducer = (state = initialState, action) => {
                 amount: 0
             })
             total = parseFloat(total.toFixed(2))
-            return { ...state, total, amount }
+            return { ...state, listCart: state.listCart, total, amount }
 
         case SAVE_CART_TO_LOCAL:
             setToLocalStorage('cart', action.payload);

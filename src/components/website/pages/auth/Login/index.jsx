@@ -1,3 +1,4 @@
+import { changeStatusLogin } from 'actions/authActions';
 import AuthApi from 'api/authApi';
 import Loading from 'components/common/molecules/Loading';
 import Button from 'components/website/atoms/Button';
@@ -5,11 +6,15 @@ import Text from 'components/website/atoms/Text';
 import FormGroup from 'components/website/molecules/FormGroup';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { setToLocalStorage } from 'service/utilities/localStorage';
 
 function Register() {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const history = useHistory();
+    const dispatch = useDispatch();
+
     const [errorsState, setErrorsState] = useState({
         name: '',
         email: '',
@@ -29,13 +34,16 @@ function Register() {
 
     const saveUserInLocal = (dataUser, next) => {
         if (typeof window !== undefined) {
-            localStorage.setItem('user', JSON.stringify(dataUser));
+            dispatch(changeStatusLogin(true))
+            setToLocalStorage('user',dataUser);
+            
         }
         if (typeof next === 'function') {
             next();
         }
     }
-    const onhandleSubmit = (data, e) => {
+
+    const onhandleSubmit = (data) => {
         setPending(true);
         (async () => {
             try {

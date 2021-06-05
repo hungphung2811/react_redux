@@ -8,6 +8,10 @@ const AuthApi = {
     signIn(data) {
         const url = '/signin';
         return axiosClient.post(url, data);
+    },
+    signOut() {
+        const url = '/signout';
+        return axiosClient.post(url)
     }
 }
 

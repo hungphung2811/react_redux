@@ -1,4 +1,4 @@
-import { ADD_TO_CART, GET_TOTAL, SAVE_CART_TO_LOCAL } from "service/constants/actionTypeCart"
+import { ADD_TO_CART, GET_TOTAL, SAVE_CART_TO_LOCAL } from "service/constants/actionTypeCartConstant"
 
 export const addToCart = (cart) => {
     return {

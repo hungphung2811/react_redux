@@ -5,3 +5,7 @@ export const setToLocalStorage = (name, data) => {
 export const getFromLocalStorage = (name) => {
     return JSON.parse(localStorage.getItem(name)) || null;
 }
+
+export const deleteInLocalStorage = (name) => {
+    localStorage.removeItem(name)
+}
