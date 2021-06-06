@@ -27,7 +27,7 @@ function EditProduct() {
             try {
                 const dataProduct = await ProductApi.getOne(id)
                 setProduct(dataProduct)
-                reset({...dataProduct,image:null})
+                reset({ ...dataProduct, image: null, tempImage: dataProduct.image })
             } catch (error) {
 
             }
@@ -55,19 +55,26 @@ function EditProduct() {
         setPending(true);
         ; (async () => {
             try {
-                const productImage = data.image[0];
-                if (productImage) {
+                const { user, token } = getFromLocalStorage('user');
+                if (data.image) {
+                    const productImage = data.image[0];
                     let storageRef = firebaseClient.storage().ref(`image-category/${productImage.name}`);
                     storageRef.put(productImage).then(() => {
                         storageRef.getDownloadURL().then(async (url) => {
-                            const newData = { ...data, image: url }
-                            const { user, token } = getFromLocalStorage('user');
-                            const newProduct = await ProductApi.updateProduct(id,newData, user._id, token)
+                            const newData = { ...data, image: url, tempImage: null }
+                            const newProduct = await ProductApi.updateProduct(id, newData, user._id, token)
                             setProduct(newProduct);
                             setPending(false)
-                            reset({...newProduct,image:null});
+                            reset({ ...newProduct, image: null, tempImage: newProduct.image });
                         })
                     })
+                } else {
+                    const newData = { ...data, image: data.tempImage, tempImage: null }
+                    // console.log({data,newData});
+                    const newProduct = await ProductApi.updateProduct(id, newData, user._id, token)
+                    setProduct(newProduct);
+                    setPending(false);
+                    reset({ ...newProduct, image: null, tempImage: newProduct.image });
                 }
             } catch (error) {
                 console.log(error);
@@ -105,7 +112,7 @@ function EditProduct() {
                                 </Text>
                             </div>
 
-                            
+
                             <div className='mt-5'>
                                 <FormGroup
                                     type='number'
@@ -140,13 +147,16 @@ function EditProduct() {
                                     {errorsState.quantity}
                                 </Text>
                             </div>
+                            <div>
+                                <input type="hidden"  {...register('tempImage')} />
+                            </div>
                             <div className='mt-5'>
                                 <label htmlFor="country" className="block text-sm font-medium text-gray-700">
                                     image
-                                    <span className='ml-1 text-xs text-red-500'>{require ? '*' : ''}</span>
+                                    <span className='ml-1 text-xs text-red-500'> *</span>
                                 </label>
                                 <input
-                                    {...register('image', { required: true })}
+                                    {...register('image')}
                                     className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                     type="file" />
                             </div>
