@@ -19,6 +19,10 @@ const ProductApi = {
     createProduct(product, userId, token) {
         const url = `/products/${userId}`;
         return axiosClient.post(url, product, { headers: { Authorization: `Bearer ${token}` } });
+    },
+    updateProduct(id, product, userId, token) {
+        const url = `/products/${id}/${userId}`;
+        return axiosClient.put(url, product, { headers: { Authorization: `Bearer ${token}` } });
     }, getItemsByOption(option) {
         const arrOption = [];
         if (option) {

@@ -1,4 +1,4 @@
-import { DELETE_PRODUCT, GET_PRODUCT } from "service/constants/actionTypeProductConstant";
+import { DELETE_PRODUCT, EDIT_PRODUCT, GET_PRODUCT } from "service/constants/actionTypeProductConstant";
 
 const initialState = {
     listProducts: [],
@@ -19,6 +19,8 @@ const productReducer = (state = initialState, action) => {
             return {
                 ...state, listProducts: newListProduct, loading: false
             }
+        case EDIT_PRODUCT:
+            return { ...state, listProducts: [...state.listProducts, action.payload], loading: false }
         default:
             return state;
     }
