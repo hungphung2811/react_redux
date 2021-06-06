@@ -12,9 +12,22 @@ const ProductApi = {
         const url = `/products/?categoryId=${categoryId}`
         return axiosClient.get(url)
     }
-    , deleteProduct(productId,userId,token) {
+    , deleteProduct(productId, userId, token) {
         const url = `/products/${productId}/${userId}`;
         return axiosClient.delete(url, { headers: { Authorization: `Bearer ${token}` } });
+    },
+    createProduct(product, userId, token) {
+        const url = `/products/${userId}`;
+        return axiosClient.post(url, product, { headers: { Authorization: `Bearer ${token}` } });
+    }, getItemsByOption(option) {
+        const arrOption = [];
+        if (option) {
+            for (const key in option) {
+                arrOption.push(`${key}=${option[key]}&`);
+            }
+        }
+        const url = `/products?${arrOption.join('')}`;
+        return axiosClient.get(url);
     }
 }
 

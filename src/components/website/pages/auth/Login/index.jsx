@@ -3,7 +3,7 @@ import AuthApi from 'api/authApi';
 import Loading from 'components/common/molecules/Loading';
 import Button from 'components/common/atoms/Button';
 import Text from 'components/common/atoms/Text';
-import FormGroup from 'components/website/molecules/FormGroup';
+import FormGroup from 'components/common/molecules/FormGroup';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';

@@ -1,7 +1,6 @@
 import { getProducts } from 'actions/productActions';
 import ProductApi from 'api/productApi';
 import ListProducts from 'components/admin/organisms/ListProducts';
-import Button from 'components/common/atoms/Button';
 import Loading from 'components/common/molecules/Loading';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,7 +12,8 @@ function ProductDashboardPage() {
     useEffect(() => {
         ; (async () => {
             try {
-                const dataProducts = await ProductApi.getAll();
+                // const dataProducts = await ProductApi.getAll();
+                const dataProducts = await ProductApi.getItemsByOption({ _limit: 10, _sort: 'createdAt', _order: 'desc' });
                 dispatch(getProducts(dataProducts))
             } catch (error) {
                 console.log(error);
@@ -30,7 +30,7 @@ function ProductDashboardPage() {
                 <div className="bg-gray-200 py-3">
                     <div className="px-4 mr-auto flex justify-end mb-1.5">
                         <Link
-                        to='/admin/product/addnew'
+                            to='/admin/product/addnew'
                             className='px-3 py-1 text-[15px] rounded-[5px] text-white font-body font-medium bg-green-700 hover:bg-green-600'
                         >
                             Add new
