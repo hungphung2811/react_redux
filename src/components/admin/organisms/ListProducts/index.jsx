@@ -1,3 +1,5 @@
+import { deleteProduct } from 'actions/productActions'
+import ProductApi from 'api/productApi'
 import TdTable from 'components/admin/atoms/TdTable'
 import ThTable from 'components/admin/atoms/ThTable'
 import RowTable from 'components/admin/molecules/RowTable'
@@ -6,8 +8,24 @@ import Text from 'components/common/atoms/Text'
 import React from 'react'
 import { FaTimes } from 'react-icons/fa'
 import { FiEdit } from 'react-icons/fi'
+import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { getFromLocalStorage } from 'service/utilities/localStorage'
 
 function ListProducts({ products }) {
+    const dispatch = useDispatch()
+    const handleDeleteProduct = (id) => {
+        try {
+            ; (async () => {
+                const { user, token } = getFromLocalStorage('user');
+                await ProductApi.deleteProduct(id, user._id, token);
+                dispatch(deleteProduct(id));
+            })();
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <>
             <table className={`min-w-full divide-y divide-gray-200 ${products.length === 0 ? 'hidden' : ''}`}>
@@ -25,9 +43,9 @@ function ListProducts({ products }) {
                         <ThTable>status</ThTable>
                         <ThTable>
                             Quantity
-                                                    <div className="text-xs text-gray-500 block capitalize">
+                            <div className="text-xs text-gray-500 block capitalize">
                                 Instock / Total products
-                                                    </div>
+                            </div>
                         </ThTable>
                         <ThTable>edit</ThTable>
                         <ThTable>delete</ThTable>
@@ -77,9 +95,13 @@ function ListProducts({ products }) {
                                 </Text>
                             </TdTable>
                             <TdTable>
-                                <FiEdit className='text-green-500 text-[20px]' />
+                                <Link to={`/admin/product/edit/${product._id}`}>
+                                    <FiEdit className='text-green-500 text-[20px]' />
+                                </Link>
                             </TdTable>
-                            <TdTable>
+                            <TdTable onClick={() => {
+                                handleDeleteProduct(product._id)
+                            }}>
                                 <FaTimes className='text-red-500 text-[20px]' />
                             </TdTable>
                         </RowTable>

@@ -1,33 +1,22 @@
+import { getProducts } from 'actions/productActions';
 import ProductApi from 'api/productApi';
-import ListProducts from 'components/admin/organisms/ListProducts'
+import ListProducts from 'components/admin/organisms/ListProducts';
 import Button from 'components/common/atoms/Button';
 import Loading from 'components/common/molecules/Loading';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 function ProductDashboardPage() {
-    const [products, setProducts] = useState({
-        listProducts: [],
-        loading: true,
-        erroring: null,
-        message: '',
-    })
-
+    const products = useSelector(state => state.product)
+    const dispatch = useDispatch()
     useEffect(() => {
         ; (async () => {
             try {
                 const dataProducts = await ProductApi.getAll();
-                setProducts({
-                    ...products,
-                    listProducts: [...products.listProducts, ...dataProducts],
-                    loading: false
-                })
+                dispatch(getProducts(dataProducts))
             } catch (error) {
-                setProducts({
-                    ...products,
-                    listProducts: [...products.listProducts],
-                    loading: false,
-                    erroring: error
-                })
+                console.log(error);
             }
         })();
     }, [])
@@ -40,15 +29,12 @@ function ProductDashboardPage() {
             <div>
                 <div className="bg-gray-200 py-3">
                     <div className="px-4 mr-auto flex justify-end mb-1.5">
-                        <Button
-                        variant='btn-tag'
-                        bg='bg-green-700'
-                        twCustom = {true}
-                        classname='px-3 py-1 rounded-md text-white font-body font-medium hover:bg-green-600'
+                        <Link
+                        to='/admin/product/addnew'
+                            className='px-3 py-1 text-[15px] rounded-[5px] text-white font-body font-medium bg-green-700 hover:bg-green-600'
                         >
                             Add new
-                        </Button>
-                        
+                        </Link>
                     </div>
                     <div className="flex flex-col">
                         <div className="-my-2 overflow-x-auto">

@@ -1,15 +1,14 @@
-import AuthApi from 'api/authApi';
-import Loading from 'components/common/molecules/Loading';
+import CategoryApi from 'api/categoryApi';
 import Button from 'components/common/atoms/Button';
 import Text from 'components/common/atoms/Text';
+import Loading from 'components/common/molecules/Loading';
 import FormGroup from 'components/website/molecules/FormGroup';
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import React, { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom';
 
-
-function Register() {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+function AddnewProduct() {
+    const { handleSubmit, register, reset } = useForm();
 
     const [errorsState, setErrorsState] = useState({
         name: '',
@@ -19,58 +18,46 @@ function Register() {
     const [success, setSuccess] = useState(false);
     const [pending, setPending] = useState(false);
 
-    const changeState = (key, value) => {
-        return {
-            ...errorsState,
-            name: '',
-            email: '',
-            password: '',
-            [key]: value
-        }
-    }
-    const onhandleSubmit = (data, e) => {
-        setPending(true);
+
+    const [catogories, setCatogories] = useState([])
+
+    useEffect(() => {
         (async () => {
             try {
-                await AuthApi.signUp(data);
-                setErrorsState(() => {
-                    return changeState('', '');
-                })
-                setPending(false);
-                setSuccess(true)
-                e.target.reset();
+                const dataCategories = await CategoryApi.getAll();
+                setCatogories(dataCategories);
             } catch (error) {
-                setPending(false);
-                const { errorName, errorEmail, errorPassword } = error.response.data.error;
-                if (errorName) {
-                    setErrorsState(() => {
-                        return changeState('name', errorName);
-                    })
-                } else if (errorEmail) {
-                    setErrorsState(() => {
-                        return changeState('email', errorEmail);
-                    })
-                } else if (errorPassword) {
-                    setErrorsState(()=>{
-                        return changeState('password', errorPassword);
-                    })
-                }
+
             }
         })();
+    }, [])
+    const onSubmit = (data) => {
+        console.log(data);
+        reset();
     }
-
     return (
 
         <>
-            <div className="mt-10 sm:mt-14 mx-auto w-[600px]">
+            <div className={`${pending ? 'block' : 'hidden'}`}>
+                <Loading />
+            </div>
+            <div className="mt-10 sm:mt-14 mx-auto">
                 <Text className={`${success ? 'block' : 'hidden'} px-2 py-1 mb-2 rounded-sm bg-green-400 bg-opacity-80 font-medium text-xs`}>
                     ban dang dang ky thanh cong
-                            <span className='underline'>
+                    <Text variant='span' className='underline'>
                         <Link to='/buyer/login'> dawng nhap</Link>
-                    </span>
+                    </Text>
                 </Text>
-                <form onSubmit={handleSubmit(onhandleSubmit)}>
+
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="shadow overflow-hidden sm:rounded-md border-b-0 border border-gray-100">
+                        <div className="px-4 py-5 bg-white sm:p-6">
+                            <select name="category" id="category" {...register('category')}>
+                                {catogories.map(category => {
+                                    return <option value={category.cateName}>{category.cateName}</option>
+                                })}
+                            </select>
+                        </div>
                         <div className="px-4 py-5 bg-white sm:p-6">
                             <div>
                                 <FormGroup
@@ -138,14 +125,11 @@ function Register() {
                         </div>
                     </div>
                 </form>
-            </div>
-            <div className={`${pending ? 'block' : 'hidden'}`}>
-                <Loading />
+
             </div>
         </>
 
-    
-)
+    )
 }
 
-export default Register
+export default AddnewProduct

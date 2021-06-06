@@ -12,6 +12,10 @@ const ProductApi = {
         const url = `/products/?categoryId=${categoryId}`
         return axiosClient.get(url)
     }
+    , deleteProduct(productId,userId,token) {
+        const url = `/products/${productId}/${userId}`;
+        return axiosClient.delete(url, { headers: { Authorization: `Bearer ${token}` } });
+    }
 }
 
 export default ProductApi;

@@ -1,6 +1,8 @@
 import CategoryDashboardPage from 'components/admin/pages/CategoryDashboardPage'
 import DashBoardPage from 'components/admin/pages/DashboardPage'
 import ProductDashboardPage from 'components/admin/pages/ProductDashboardPage'
+import AddnewProduct from 'components/admin/pages/ProductDashboardPage/AddnewProduct'
+import EditProduct from 'components/admin/pages/ProductDashboardPage/EditProduct'
 import TemplateAdmin from 'components/common/templates/TemplateAdmin'
 import TemplateAuth from 'components/common/templates/TemplateAuth'
 import TemplateWebsite from 'components/common/templates/TemplateWebsite'
@@ -28,8 +30,14 @@ function Routes() {
                             <Route exact path='/admin/dashboard'>
                                 <DashBoardPage />
                             </Route>
-                            <Route exact path='/admin/product'>
+                            <Route exact path='/admin/product/'>
                                 <ProductDashboardPage />
+                            </Route>
+                            <Route exact path='/admin/product/addnew'>
+                                <AddnewProduct />
+                            </Route>
+                            <Route exact path='/admin/product/edit/:id'>
+                                <EditProduct />
                             </Route>
                             <Route exact path='/admin/category'>
                                 <CategoryDashboardPage />
