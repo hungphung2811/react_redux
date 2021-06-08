@@ -7,6 +7,7 @@ import Button from 'components/common/atoms/Button';
 import ImageItem from 'components/common/atoms/ImageItem';
 import Text from 'components/common/atoms/Text';
 import Breadcrumb from 'components/website/molecules/Breadcrumb';
+import AsideFilter from 'components/website/molecules/AsideFilter';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router'
@@ -96,8 +97,8 @@ function Category() {
                             </div>)
                         })}
                     </div>
-                    <div className='w-[300px] ml-[50px] bg-blue-500 z-10 sticky top-[105px] h-[100px]'>
-                        side bar category
+                    <div className='w-[300px] ml-[50px] bg-blue-500 z-10 h-[100px]'>
+                        <AsideFilter />
                     </div>
                 </div>
             </div>

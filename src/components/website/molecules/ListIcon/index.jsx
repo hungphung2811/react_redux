@@ -14,7 +14,6 @@ import CartPreView from '../CartPreView';
 function ListIcon() {
     const user = getFromLocalStorage('user');
     const { isLogged } = useSelector(state => state.auth)
-    console.log(isLogged);
     const { amount } = useSelector(state => state.cart);
     const [showCartPreview, setShowCartPreview] = useState(false);
     const history = useHistory();
