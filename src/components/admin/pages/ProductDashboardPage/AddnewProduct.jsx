@@ -140,9 +140,7 @@ function AddnewProduct() {
                                 <select name="category"
                                     className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                     {...register('categoryId')}
-                                    value={categories[1] ? categories[1]._id : ''}
                                 >
-
                                     {categories.map((category, index) => {
                                         return <option key={index} value={category._id}>
                                             {category.cateName}

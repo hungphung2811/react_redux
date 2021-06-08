@@ -12,6 +12,10 @@ const AuthApi = {
     signOut() {
         const url = '/signout';
         return axiosClient.post(url)
+    },
+    checkAdmin(userId, token) {
+        const url = `/checkAdmin/${userId}`;
+        return axiosClient.get(url, { headers: { Authorization: `Bearer ${token}` } })
     }
 }
 
