@@ -1,16 +1,14 @@
-import { saveCartToLocalStorage } from 'actions/cartActions';
-import { getTotalCart } from 'actions/cartActions';
-import { addToCart } from 'actions/cartActions';
+import { addToCart, getTotalCart, saveCartToLocalStorage } from 'actions/cartActions';
 import ProductApi from 'api/productApi';
-import Loading from 'components/common/molecules/Loading';
-import Button from 'components/common/atoms/Button';
 import ImageItem from 'components/common/atoms/ImageItem';
 import Text from 'components/common/atoms/Text';
-import Breadcrumb from 'components/website/molecules/Breadcrumb';
+import Loading from 'components/common/molecules/Loading';
 import AsideFilter from 'components/website/molecules/AsideFilter';
-import React, { useEffect, useState } from 'react'
+import Breadcrumb from 'components/website/molecules/Breadcrumb';
+import React, { useEffect, useState } from 'react';
+import { FiShoppingCart } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router'
+import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 
 function Category() {
@@ -34,7 +32,12 @@ function Category() {
 
         (async () => {
             try {
-                const dataProducts = await ProductApi.getByCategory(id);
+                let dataProducts;
+                if (id) {
+                    dataProducts = await ProductApi.getByCategory(id);
+                } else {
+                    dataProducts = await ProductApi.getAll();
+                }
                 setProducts({
                     list: [...dataProducts],
                     loading: false,
@@ -68,32 +71,37 @@ function Category() {
 
                     <div className='grid grid-cols-3 gap-[30px]'>
                         {products.list.map((product, index) => {
-                            return (<div key={index}>
+                            return (<div className='mb-5' key={index}>
                                 <Link to={`/detail/${product._id}`}>
                                     <ImageItem
                                         url={product.image}
                                         alt={product.name}
                                         className='w-[265px] h-[265px] object-cover'
                                     />
-                                    <Text variant='h2'
-                                        className='mt-3 text-[15px] font-semibold font-body'
-                                    >
-                                        {product.name}
-                                    </Text>
                                 </Link>
-                                <div onClick={() => {
-                                    handleAddToCart(product)
-                                }}>
-                                    <Button
-                                        variant='btn-tag'
-                                        size='small'
-                                        bg='bg-blue-500'
-                                        color='text-white'
-                                        twCustom={true}
-                                        classname='font-body font-medium text-[10px]'
-
-                                    >add to cart</Button>
+                                <div className='mt-3 flex justify-between items-center'>
+                                    <Link to={`/detail/${product._id}`}>
+                                        <Text variant='h2'
+                                            className='mt-3 text-[15px] font-semibold font-body'
+                                        >
+                                            {product.name}
+                                        </Text>
+                                    </Link>
+                                    <Text className='mt-2 bg-gray-200 text-center px-1.5 py-1 rounded-xl cursor-pointer'
+                                        variant='span'
+                                        onClick={() => {
+                                            handleAddToCart(product)
+                                        }}>
+                                        <FiShoppingCart className='text-gray-500 text-[15px]' />
+                                    </Text>
                                 </div>
+                                <div className='flex text-[15px] mt-2 font-semibold'>
+                                    £
+                                    <Text className='ml-5' variant='span'>
+                                        {product.price}
+                                    </Text>
+                                </div>
+
                             </div>)
                         })}
                     </div>

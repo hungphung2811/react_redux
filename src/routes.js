@@ -83,6 +83,9 @@ function Routes() {
                             <Route exact path='/category/:id'>
                                 <CategoryPage />
                             </Route>
+                            <Route exact path='/shop'>
+                                <CategoryPage />
+                            </Route>
                             <Route exact path='/detail/:id'>
                                 <DetailPage />
                             </Route>

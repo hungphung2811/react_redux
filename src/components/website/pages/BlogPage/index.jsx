@@ -3,6 +3,7 @@ import Breadcrumb from 'components/website/molecules/Breadcrumb'
 import BlogApi from 'api/blogApi';
 import BlogSection from 'components/website/organisms/BlogSection';
 import Loading from 'components/common/molecules/Loading';
+import AsideBlog from 'components/website/molecules/AsideBlog';
 
 function BlogPage() {
     const [blogs, setBlogs] = useState({
@@ -46,8 +47,8 @@ function BlogPage() {
                             })
                         }
                     </div>
-                    <div className="min-w-[300px] bg-blue-500 sticky top-[105px] h-[100px] z-10">
-                        side bar
+                    <div className="min-w-[300px] h-[100px] z-10">
+                        <AsideBlog/>
                     </div>
                 </div>
             </div>

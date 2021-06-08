@@ -7,6 +7,7 @@ import SubInfoBlog from 'components/website/molecules/SubInfoBlog'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
+import AsideBlog from 'components/website/molecules/AsideBlog'
 
 function BlogDetailPage() {
     const { id } = useParams()
@@ -74,7 +75,7 @@ function BlogDetailPage() {
                         </div>
                     </div>
                     <div className="col-span-2">
-                        side bar
+                        <AsideBlog/>
                     </div>
                 </div>
             </div>
