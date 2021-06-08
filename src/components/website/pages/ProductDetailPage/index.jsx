@@ -1,4 +1,5 @@
 import ProductApi from 'api/productApi';
+import Breadcrumb from 'components/website/molecules/Breadcrumb';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 
@@ -33,6 +34,9 @@ function DetailPage() {
     }, [id])
     return (
         <div>
+            <Breadcrumb variant='custom' label='shop'>
+                The team watchers
+            </Breadcrumb>
             detail page website {id}
         </div>
     )
