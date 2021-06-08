@@ -1,7 +1,9 @@
+import { getFromLocalStorage } from "service/utilities/localStorage";
+
 const { CHANGE_STATUS_LOGGED } = require("service/constants/actionTypeAuthConstant");
 
 const initialState = {
-    isLogged: false
+    isLogged: getFromLocalStorage('isLogged') || false
 }
 
 const authReducer = (state = initialState, action) => {

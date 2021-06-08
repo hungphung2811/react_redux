@@ -14,6 +14,7 @@ import CartPreView from '../CartPreView';
 function ListIcon() {
     const user = getFromLocalStorage('user');
     const { isLogged } = useSelector(state => state.auth)
+    console.log(isLogged);
     const { amount } = useSelector(state => state.cart);
     const [showCartPreview, setShowCartPreview] = useState(false);
     const history = useHistory();
@@ -24,7 +25,7 @@ function ListIcon() {
             await AuthApi.signOut();
             dispatch(changeStatusLogin(false))
             deleteInLocalStorage('user');
-            history.push('/shop')
+            history.push('/home')
         })();
     }
 

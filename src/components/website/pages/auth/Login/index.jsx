@@ -35,8 +35,9 @@ function Register() {
     const saveUserInLocal = (dataUser, next) => {
         if (typeof window !== undefined) {
             dispatch(changeStatusLogin(true))
-            setToLocalStorage('user',dataUser);
-            
+            setToLocalStorage('isLogged', true);
+            setToLocalStorage('user', dataUser);
+
         }
         if (typeof next === 'function') {
             next();
