@@ -17,13 +17,14 @@ import DetailPage from 'components/website/pages/ProductDetailPage'
 import HomePage from 'components/website/pages/HomePage'
 import React from 'react'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
+import PrivateRoute from './PrivateRoute'
 
 function Routes() {
     return (
         <Router>
             <Switch>
 
-                <Route path='/admin/:path?'>
+                <PrivateRoute path='/admin/:path?'>
                     <TemplateAdmin>
                         <Switch>
                             <Redirect exact from='/admin' to='/admin/dashboard' />
@@ -47,7 +48,7 @@ function Routes() {
                             </Route>
                         </Switch>
                     </TemplateAdmin>
-                </Route>
+                </PrivateRoute>
 
                 <Route exact path='/buyer/:path?'>
                     <TemplateAuth>
