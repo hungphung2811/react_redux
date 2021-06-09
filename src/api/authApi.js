@@ -16,6 +16,9 @@ const AuthApi = {
     checkAdmin(userId, token) {
         const url = `/checkAdmin/${userId}`;
         return axiosClient.get(url, { headers: { Authorization: `Bearer ${token}` } })
+    }, checkLogin(token) {
+        const url = `/check`;
+        return axiosClient.get(url, { headers: { Authorization: `Bearer ${token}` } })
     }
 }
 

@@ -1,19 +1,16 @@
 import AuthApi from 'api/authApi';
 import React, { useEffect, useState } from 'react';
 import { Redirect, Route } from 'react-router';
-import { checkAdminLocal, checkUserLocal } from 'service/utilities/Auth';
+import { checkUserLocal } from 'service/utilities/Auth';
 import { getFromLocalStorage } from 'service/utilities/localStorage';
 
 function PrivateRoute({ children }) {
-    console.log(checkAdminLocal());
-    const user = getFromLocalStorage('user')?.user;
-    const token = getFromLocalStorage('user')?.token;
-
+    const { user, token } = getFromLocalStorage('user');
     const [state, setState] = useState(false);
     useEffect(() => {
         ; (async () => {
             try {
-                const dataUser = await AuthApi.checkAdmin(user._id, token)
+                const dataUser = await AuthApi.checkLogin(token)
                 if (dataUser) {
                     console.log({ dataUser });
                     setState(true)
@@ -26,7 +23,7 @@ function PrivateRoute({ children }) {
     }, [])
     return (
         <Route render={() => {
-            return (checkAdminLocal() && state) ? children : checkUserLocal() ? <Redirect to='/home' /> : <Redirect to='/auth/login' />
+            return (checkUserLocal() && state) ? children : <Redirect to='/auth/login' />
         }} />
     )
 }

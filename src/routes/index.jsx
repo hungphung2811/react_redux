@@ -50,16 +50,16 @@ function Routes() {
                     </TemplateAdmin>
                 </PrivateRoute>
 
-                <Route exact path='/buyer/:path?'>
+                <Route exact path='/auth/:path?'>
                     <TemplateAuth>
                         <Switch>
-                            <Route path='/buyer/register'>
+                            <Route path='/auth/register'>
                                 <Register />
                             </Route>
-                            <Route path='/buyer/login'>
+                            <Route path='/auth/login'>
                                 <Login />
                             </Route>
-                            <Route path='/buyer/logout'>
+                            <Route path='/auth/logout'>
                                 <Logout />
                             </Route>
                         </Switch>

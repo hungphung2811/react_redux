@@ -1,15 +1,15 @@
 import AuthApi from "api/authApi";
 import { getFromLocalStorage } from "./localStorage";
 
-const { user, token } = getFromLocalStorage('user');
+const user = getFromLocalStorage('user')?.user;
+const token = getFromLocalStorage('user')?.token;
 
 export const checkAdminLocal = (userLocal = user, tokenLocal = token) => {
-    let status = true;
     if (!userLocal || !tokenLocal || userLocal?.role === 0) {
-        status = false;
+        return false;
     }
 
-    return status;
+    return true;
 }
 
 export const checkUserLocal = (userLocal = user) => {

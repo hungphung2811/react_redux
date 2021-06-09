@@ -12,12 +12,12 @@ function UserNav() {
             <FiUser onClick={toggleSubMenu} cursor='pointer' />
             <ul className={`${active ? 'active' : ''} transition-opacity invisible opacity-0 absolute top-6 left-3 bg-white shadow-md`}>
                 <li className='px-2 py-0.5 text-sm font-medium capitalize cursor-pointer'>
-                    <Link to='/buyer/register' onClick={toggleSubMenu}>
+                    <Link to='/auth/register' onClick={toggleSubMenu}>
                         register
                     </Link>
                 </li>
                 <li className='px-2 py-0.5 text-sm font-medium capitalize cursor-pointer'>
-                    <Link to='/buyer/login' onClick={toggleSubMenu}>
+                    <Link to='/auth/login' onClick={toggleSubMenu}>
                         login
                     </Link>
                 </li>
