@@ -5,12 +5,12 @@ import { checkUserLocal } from 'service/utilities/Auth';
 import { getFromLocalStorage } from 'service/utilities/localStorage';
 
 function PrivateRoute({ children }) {
-    const { user, token } = getFromLocalStorage('user');
+    const tokenLocal = getFromLocalStorage('user')?.token;
     const [state, setState] = useState(false);
     useEffect(() => {
         ; (async () => {
             try {
-                const dataUser = await AuthApi.checkLogin(token)
+                const dataUser = await AuthApi.checkLogin(tokenLocal)
                 if (dataUser) {
                     console.log({ dataUser });
                     setState(true)
