@@ -16,10 +16,15 @@ module.exports = {
         wiggle: {
           '0%': { transform: 'rotate(30deg) translate(200px,50px)' },
           '100%': { transform: 'rotate(0deg) translate(0,0)' },
+        },
+        fromTopToBottom:{
+          '0%': { transform: 'translate(0,20px)' },
+          '100%': { transform: 'translate(0,0)' },
         }
       },
       animation: {
         wiggle: 'wiggle 1s ease',
+        fromToToBottom: 'fromTopToBottom 1s ease',
       }
     },
   },

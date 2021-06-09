@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames';
 
 function Button(properties) {
-    const { children, variant, bg, color, classname,twCustom,
+    const { children, variant, bg, color, classname, twCustom,
         size, primary, secondary, dark, light, waring, success, error,
         ...props
     } = properties;
@@ -21,6 +21,7 @@ function Button(properties) {
                                 { [`${color}`]: color },
                                 { [`${bg}`]: bg },
                                 [
+                                    { 'px-3 py-[8px]': size === 'xs' },
                                     { 'px-3 py-1': size === 'small' },
                                     { 'px-5 py-1.5': size === 'medium' },
                                     { 'px-8 py-2.5': size === 'small' },

@@ -5,6 +5,7 @@ import Text from 'components/common/atoms/Text';
 import Loading from 'components/common/molecules/Loading';
 import AsideFilter from 'components/website/molecules/AsideFilter';
 import Breadcrumb from 'components/website/molecules/Breadcrumb';
+import CardProduct from 'components/website/molecules/CardProduct';
 import React, { useEffect, useState } from 'react';
 import { FiShoppingCart } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
@@ -54,15 +55,11 @@ function Category() {
         })();
     }, [id])
 
-    useEffect(() => {
-        dispatch(getTotalCart());
-        dispatch(saveCartToLocalStorage(cart));
-    }, [listCart])
+    // useEffect(() => {
+    //     dispatch(getTotalCart());
+    //     dispatch(saveCartToLocalStorage(cart));
+    // }, [listCart])
 
-    const handleAddToCart = (product) => {
-        dispatch(addToCart(product))
-        dispatch(saveCartToLocalStorage(cart))
-    }
     return (
         <>
             <Breadcrumb>category</Breadcrumb>
@@ -71,38 +68,9 @@ function Category() {
 
                     <div className='grid grid-cols-3 gap-[30px]'>
                         {products.list.map((product, index) => {
-                            return (<div className='mb-5' key={index}>
-                                <Link to={`/detail/${product._id}`}>
-                                    <ImageItem
-                                        url={product.image}
-                                        alt={product.name}
-                                        className='w-[265px] h-[265px] object-cover'
-                                    />
-                                </Link>
-                                <div className='mt-3 flex justify-between items-center'>
-                                    <Link to={`/detail/${product._id}`}>
-                                        <Text variant='h2'
-                                            className='mt-3 text-[15px] font-semibold font-body'
-                                        >
-                                            {product.name}
-                                        </Text>
-                                    </Link>
-                                    <Text className='mt-2 bg-gray-200 text-center px-1.5 py-1 rounded-xl cursor-pointer'
-                                        variant='span'
-                                        onClick={() => {
-                                            handleAddToCart(product)
-                                        }}>
-                                        <FiShoppingCart className='text-gray-500 text-[15px]' />
-                                    </Text>
-                                </div>
-                                <div className='flex text-[15px] mt-2 font-semibold'>
-                                    £
-                                    <Text className='ml-5' variant='span'>
-                                        {product.price}
-                                    </Text>
-                                </div>
-
-                            </div>)
+                            return (
+                                <CardProduct key={index} product={product} />
+                            )
                         })}
                     </div>
                     <div className='w-[300px] ml-[50px] bg-blue-500 z-10 h-[100px]'>

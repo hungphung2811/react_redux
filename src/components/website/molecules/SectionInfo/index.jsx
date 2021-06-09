@@ -10,7 +10,7 @@ function SectionInfo() {
                 color='text-white'
                 dark
                 twCustom={true}
-                classname='mb-8 font-semibold text-[15px] hover:bg-yellow-700 transition-colors'
+                classname='animate-fromToToBottom mb-8 font-semibold text-[15px] hover:bg-yellow-700 transition-colors'
             >
                 New colection
             </Button>

@@ -1,4 +1,3 @@
-import AuthApi from "api/authApi";
 import { getFromLocalStorage } from "./localStorage";
 
 const user = getFromLocalStorage('user')?.user;
