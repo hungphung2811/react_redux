@@ -1,4 +1,4 @@
-import { ADD_TO_CART, GET_TOTAL, SAVE_CART_TO_LOCAL } from "service/constants/actionTypeCartConstant"
+import { ADD_TO_CART, GET_TOTAL, REMOVE_CART_ITEM, SAVE_CART_TO_LOCAL } from "service/constants/actionTypeCartConstant"
 
 export const addToCart = (cart) => {
     return {
@@ -10,6 +10,13 @@ export const addToCart = (cart) => {
 export const getTotalCart = () => {
     return {
         type: GET_TOTAL
+    }
+}
+
+export const removeCartItem = (cart) => {
+    return {
+        type: REMOVE_CART_ITEM,
+        payload: cart
     }
 }
 

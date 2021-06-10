@@ -1,16 +1,11 @@
-import { addToCart, getTotalCart, saveCartToLocalStorage } from 'actions/cartActions';
 import ProductApi from 'api/productApi';
-import ImageItem from 'components/common/atoms/ImageItem';
-import Text from 'components/common/atoms/Text';
 import Loading from 'components/common/molecules/Loading';
 import AsideFilter from 'components/website/molecules/AsideFilter';
 import Breadcrumb from 'components/website/molecules/Breadcrumb';
 import CardProduct from 'components/website/molecules/CardProduct';
 import React, { useEffect, useState } from 'react';
-import { FiShoppingCart } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
-import { Link } from 'react-router-dom';
 
 function Category() {
     const { id } = useParams();

@@ -1,5 +1,5 @@
-import ImageItem from 'components/common/atoms/ImageItem'
 import Text from 'components/common/atoms/Text'
+import CartPreviewItem from 'components/website/molecules/CartPreviewItem'
 import React from 'react'
 import { FiCheck, FiEye } from 'react-icons/fi'
 import { useSelector } from 'react-redux'
@@ -9,41 +9,7 @@ function CartPreView() {
     return (
         <>
             {listCart.map((cart, index) => {
-                return <li key={index} className='px-3 py-1 flex justify-between items-center'>
-                    <ImageItem
-                        className='w-8 object-contain'
-                        url={cart.image}
-                    />
-                    <div>
-                        <Text
-                            variant='span'
-                            className='text-[12px] text-white font-body font-medium'
-                        >
-                            {cart.name}
-                        </Text>
-
-                        <div>
-                            <Text
-                                variant='span'
-                                className='mr-2 text-[12px] text-white font-body font-thin'
-                            >
-                                {cart.amount}
-                            </Text>
-                            x
-                            <Text
-                                variant='span'
-                                className='ml-2 text-[17px] text-yellow-600 font-semibold'
-                            >
-                                $ {cart.price}
-                            </Text>
-                        </div>
-                    </div>
-                    <div>
-                        <Text variant='span' className='text-xs'>
-                            x
-                        </Text>
-                    </div>
-                </li>
+                return <CartPreviewItem cartItem={cart} key={index} />
             })}
             <div className='border-t py-2 mt-3 border-gray-600 text-center'>
                 <Text

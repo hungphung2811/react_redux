@@ -1,6 +1,6 @@
 import { getFromLocalStorage, setToLocalStorage } from "service/utilities/localStorage";
 
-const { ADD_TO_CART, GET_TOTAL, SAVE_CART_TO_LOCAL } = require("service/constants/actionTypeCartConstant");
+const { ADD_TO_CART, GET_TOTAL, SAVE_CART_TO_LOCAL, REMOVE_CART_ITEM } = require("service/constants/actionTypeCartConstant");
 
 const initialState = getFromLocalStorage('cart') || {
     listCart: [],
@@ -60,6 +60,18 @@ const cartReducer = (state = initialState, action) => {
 
         case SAVE_CART_TO_LOCAL:
             setToLocalStorage('cart', action.payload);
+            return state;
+
+        case REMOVE_CART_ITEM:
+            const userConfirm = window.confirm('ban co muon xoa cart')
+            if (userConfirm) {
+                return {
+                    ...state,
+                    listCart: state.listCart.filter(cart => {
+                        return cart._id !== action.payload._id;
+                    })
+                }
+            }
             return state;
         default:
             return state;

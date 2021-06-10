@@ -5,7 +5,7 @@ import { FaInstagram } from 'react-icons/fa';
 import { FiFacebook, FiSearch, FiShoppingCart, FiTwitter } from 'react-icons/fi';
 import { useSelector } from 'react-redux';
 import { getFromLocalStorage } from 'service/utilities/localStorage';
-import CartPreView from '../CartPreView';
+import CartPreView from '../../organisms/CartPreView';
 import SubmenuUserDashboard from '../SubmenuUserDashboard';
 
 function ListIcon() {
