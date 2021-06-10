@@ -4,15 +4,14 @@ import AsideFilter from 'components/website/molecules/AsideFilter';
 import Breadcrumb from 'components/website/molecules/Breadcrumb';
 import CardProduct from 'components/website/molecules/CardProduct';
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 
 function Category() {
     const { id } = useParams();
 
-    const dispatch = useDispatch()
-    const { listCart } = useSelector(state => state.cart);
-    const cart = useSelector(state => state.cart);
+    // const dispatch = useDispatch()
+    // const { listCart } = useSelector(state => state.cart);
+    // const cart = useSelector(state => state.cart);
 
     const [products, setProducts] = useState({
         list: [],

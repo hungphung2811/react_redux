@@ -4,7 +4,7 @@ import { GrFormNext } from 'react-icons/gr'
 import { Link } from 'react-router-dom'
 
 function Breadcrumb({ variant, label, children }) {
-    if (variant == 'custom') {
+    if (variant === 'custom') {
         return (
             <div className="container flex px-32 justify-between items-center mx-auto py-8 text-center bg-gray-100">
                 <Text variant='h3' className="text-xl font-mono font-semibold capitalize">{label}</Text>

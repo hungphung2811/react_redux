@@ -1,11 +1,10 @@
 import { changeStatusLogin } from 'actions/authActions';
 import AuthApi from 'api/authApi';
 import ImageItem from 'components/common/atoms/ImageItem';
-import React, { useEffect, useState } from 'react'
-import { FiUser } from 'react-icons/fi';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import { deleteInLocalStorage, getFromLocalStorage } from 'service/utilities/localStorage';
+import { deleteInLocalStorage } from 'service/utilities/localStorage';
 
 function SubmenuUserDashboard({ user }) {
     const [active, setActive] = useState(false);

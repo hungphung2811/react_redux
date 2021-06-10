@@ -1,10 +1,6 @@
-import AuthApi from 'api/authApi';
 import HeaderAdmin from 'components/admin/organisms/HeaderAdmin';
 import SideBarAdmin from 'components/admin/organisms/SideBarAdmin';
-import React, { useEffect } from 'react';
-import { useHistory } from 'react-router';
-import { checkAdminLocal } from 'service/utilities/Auth';
-import { getFromLocalStorage } from 'service/utilities/localStorage';
+import React from 'react';
 
 function TemplateAdmin({ children }) {
     // const history = useHistory()
