@@ -1,12 +1,30 @@
+import { saveCartToLocalStorage } from 'actions/cartActions'
+import { getTotalCart } from 'actions/cartActions'
+import { clearCart } from 'actions/cartActions'
+import Button from 'components/common/atoms/Button'
 import Text from 'components/common/atoms/Text'
 import CartPreviewItem from 'components/website/molecules/CartPreviewItem'
-import React from 'react'
-import { FiCheck, FiEye } from 'react-icons/fi'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { FiEye, FiTrash } from 'react-icons/fi'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 function CartPreView() {
-    const { listCart, total } = useSelector(state => state.cart)
+    const { listCart, total } = useSelector(state => state.cart);
+    const cartState = useSelector(state => state.cart);
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getTotalCart());
+        dispatch(saveCartToLocalStorage(cartState));
+    }, [cartState.listCart])
+    const handleClearCart = () => {
+        const userConfirm = window.confirm('ban co muon xoa tat ca')
+        if (userConfirm) {
+            dispatch(clearCart())
+            dispatch(saveCartToLocalStorage(cartState))
+            console.log({ cartState });
+        }
+    }
     return (
         <>
             {listCart.map((cart, index) => {
@@ -37,12 +55,13 @@ function CartPreView() {
                     </Link>
                 </div>
                 <div>
-                    <Link
-                        className='pl-3 flex items-center'
-                        to='/checkout'>
-                        <FiCheck className='mr-2' />
-                            Check out
-                        </Link>
+                    <Text
+
+                        onClick={() => { handleClearCart() }}
+                        className='pl-3 flex items-center cursor-pointer'>
+                        <FiTrash className='mr-2' />
+                            Clear
+                        </Text>
                 </div>
             </div>
         </>

@@ -1,7 +1,7 @@
 import { increaseAmoutCart } from 'actions/cartActions'
+import { saveCartToLocalStorage } from 'actions/cartActions'
 import { decreaseAmoutCart } from 'actions/cartActions'
 import { getTotalCart } from 'actions/cartActions'
-import { saveCartToLocalStorage } from 'actions/cartActions'
 import { removeCartItem } from 'actions/cartActions'
 import Text from 'components/common/atoms/Text'
 import React, { useEffect } from 'react'
@@ -13,11 +13,6 @@ import { CHANGE_AMOUNT_DECREASE, CHANGE_AMOUNT_INCREASE } from 'service/constant
 function CartItem({ cart, ...props }) {
     const dispatch = useDispatch()
     const cartState = useSelector(state => state.cart)
-
-    useEffect(() => {
-        dispatch(getTotalCart());
-        dispatch(saveCartToLocalStorage(cartState));
-    }, [cartState.listCart])
 
     const handleRemove = (cart) => {
         const userCofirm = window.confirm('ban cos muon xoa item')

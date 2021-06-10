@@ -12,14 +12,13 @@ import Logout from 'components/website/pages/auth/Logout'
 import Register from 'components/website/pages/auth/Register'
 import BlogDetailPage from 'components/website/pages/BlogDetailPage'
 import BlogPage from 'components/website/pages/BlogPage'
+import CartPage from 'components/website/pages/CartPage'
 import CategoryPage from 'components/website/pages/CategoryPage'
-import DetailPage from 'components/website/pages/ProductDetailPage'
 import HomePage from 'components/website/pages/HomePage'
+import DetailPage from 'components/website/pages/ProductDetailPage'
 import React from 'react'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
 import PrivateRoute from './PrivateRoute'
-import CheckoutPage from 'components/website/pages/CheckoutPage'
-import CartPage from 'components/website/pages/CartPage'
 
 function Routes() {
     return (
@@ -95,9 +94,6 @@ function Routes() {
                             </Route>
                             <Route exact path='/cart'>
                                 <CartPage />
-                            </Route>
-                            <Route exact path='/checkout'>
-                                <CheckoutPage />
                             </Route>
                             <Route path='*'>
                                 404 page website

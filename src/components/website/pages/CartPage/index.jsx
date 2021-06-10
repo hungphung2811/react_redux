@@ -7,7 +7,26 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 function CartPage() {
-    const { listCart } = useSelector(state => state.cart)
+    const { listCart, amount, total } = useSelector(state => state.cart)
+    if (!Array.isArray(listCart) || listCart.length === 0) {
+        return (
+            <div className='my-10 px-32 text-center'>
+                <Text variant='span' className='block text-4xl font-semibold text-gray-200 mb-2'>
+                    Cart is empty
+                </Text>
+                <Text
+                    className='font-medium'
+                >
+                    Không có sản phẩm trong giỏ . quay trở lại
+                    <Link
+                        className='text-yellow-600 uppercase font-extrabold ml-1'
+                        to='/shop'>
+                        shop
+                    </Link>
+                </Text>
+            </div>
+        )
+    }
     return (
         <>
             <Breadcrumb >
@@ -31,18 +50,19 @@ function CartPage() {
                         })}
                     </tbody>
                 </table>
-                <div className='float-right mt-5'>
+                <div className='float-right mt-10'>
                     <Text varaint='span'
-                        className='font-semibold text-[18px]'
+                        className='font-semibold text-[18px] mb-3'
                     > Totals </Text>
                     <table className='table-auto border-collapse'>
                         <tbody>
                             <tr>
-                                <td className='border border-gray-300'>length</td>
-                                <td className='border border-gray-300'></td>
+                                <td className='border border-gray-300 px-5 py-2'>length</td>
+                                <td className='border border-gray-300 px-20 py-2'>{amount}</td>
                             </tr>
                             <tr>
-                                <td>total</td>
+                                <td className='border border-gray-300 px-5 py-2'>Total</td>
+                                <td className='border border-gray-300 px-20 py-2'>{total}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -52,11 +72,9 @@ function CartPage() {
                         color='text-white'
                         bg='bg-yellow-600'
                         twCustom={true}
-                        classname='font-semibold text-[18px] rounded hover:bg-gray-900 transition-colors'
+                        classname='mt-3 font-semibold text-[18px] rounded-[100px] hover:bg-gray-900 transition-colors'
                     >
-                        <Link to='/checkout'>
-                            Checkout
-                        </Link>
+                        Checkout
                     </Button>
                 </div>
                 <div className='clear-right'></div>

@@ -1,17 +1,24 @@
+import { getTotalCart } from 'actions/cartActions';
+import { saveCartToLocalStorage } from 'actions/cartActions';
 import { removeCartItem } from 'actions/cartActions';
 import ImageItem from 'components/common/atoms/ImageItem';
 import Text from 'components/common/atoms/Text';
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 function CartPreviewItem({ cartItem, ...props }) {
     const dispatch = useDispatch();
+    const cartState = useSelector(state => state.cart)
 
     const handleRemoveCartItem = (cart) => {
-        if (dispatch(removeCartItem(cart))) {
-            dispatch(removeCartItem(cart));
+        const userCofirm = window.confirm('ban cos muon xoa item')
+        if (userCofirm) {
+            dispatch(removeCartItem(cart))
+            console.log(cartState);
+            dispatch(saveCartToLocalStorage(cartState))
         }
     }
+
     return (
         <li {...props} className='px-3 py-1 flex justify-between items-center'>
             <ImageItem
