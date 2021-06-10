@@ -19,7 +19,7 @@ function ProductDashboardPage() {
                 console.log(error);
             }
         })();
-    }, [])
+    }, [dispatch])
 
     return (
         <>

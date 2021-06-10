@@ -1,13 +1,12 @@
 import BlogApi from 'api/blogApi'
-import Loading from 'components/common/molecules/Loading'
 import ImageItem from 'components/common/atoms/ImageItem'
 import Text from 'components/common/atoms/Text'
+import Loading from 'components/common/molecules/Loading'
+import AsideBlog from 'components/website/molecules/AsideBlog'
 import Breadcrumb from 'components/website/molecules/Breadcrumb'
 import SubInfoBlog from 'components/website/molecules/SubInfoBlog'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
-import { Link } from 'react-router-dom'
-import AsideBlog from 'components/website/molecules/AsideBlog'
 
 function BlogDetailPage() {
     const { id } = useParams()
