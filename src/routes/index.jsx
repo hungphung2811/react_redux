@@ -18,6 +18,8 @@ import HomePage from 'components/website/pages/HomePage'
 import React from 'react'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
 import PrivateRoute from './PrivateRoute'
+import CheckoutPage from 'components/website/pages/CheckoutPage'
+import CartPage from 'components/website/pages/CartPage'
 
 function Routes() {
     return (
@@ -65,6 +67,7 @@ function Routes() {
                         </Switch>
                     </TemplateAuth>
                 </Route>
+                
                 <Route>
                     <TemplateWebsite>
                         <Switch>
@@ -89,6 +92,12 @@ function Routes() {
                             </Route>
                             <Route exact path='/detail/:id'>
                                 <DetailPage />
+                            </Route>
+                            <Route exact path='/cart'>
+                                <CartPage />
+                            </Route>
+                            <Route exact path='/checkout'>
+                                <CheckoutPage />
                             </Route>
                             <Route path='*'>
                                 404 page website

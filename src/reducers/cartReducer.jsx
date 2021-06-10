@@ -1,6 +1,6 @@
 import { getFromLocalStorage, setToLocalStorage } from "service/utilities/localStorage";
 
-const { ADD_TO_CART, GET_TOTAL, SAVE_CART_TO_LOCAL, REMOVE_CART_ITEM } = require("service/constants/actionTypeCartConstant");
+const { ADD_TO_CART, GET_TOTAL, SAVE_CART_TO_LOCAL, REMOVE_CART_ITEM, CHANGE_AMOUNT_UP, CHANGE_AMOUNT_INCREASE, CHANGE_AMOUNT_DECREASE } = require("service/constants/actionTypeCartConstant");
 
 const initialState = getFromLocalStorage('cart') || {
     listCart: [],
@@ -63,16 +63,43 @@ const cartReducer = (state = initialState, action) => {
             return state;
 
         case REMOVE_CART_ITEM:
-            const userConfirm = window.confirm('ban co muon xoa cart')
-            if (userConfirm) {
-                return {
-                    ...state,
-                    listCart: state.listCart.filter(cart => {
-                        return cart._id !== action.payload._id;
-                    })
-                }
+            return {
+                ...state,
+                listCart: state.listCart.filter(cart => {
+                    return cart._id !== action.payload._id;
+                })
             }
-            return state;
+
+        case CHANGE_AMOUNT_INCREASE:
+            const newCart = state.listCart.map(cart => {
+                if (cart._id === action.payload._id) {
+                    return { ...cart, amount: cart.amount + 1 }
+                }
+                return cart
+            })
+            return { ...state, listCart: newCart }
+
+        case CHANGE_AMOUNT_DECREASE:
+            console.log('xuong reducer');
+            const tempCartDesc = state.listCart.map(cart => {
+                console.log(action.payload);
+                if (cart._id === action.payload._id) {
+                    console.log('vao',cart);
+                    let tempCart = { ...cart, amount: cart.amount - 1 }
+                    if (tempCart.amount <= 0) {
+                        const conFirmUser = window.confirm('ban muon xoa')
+                        if (conFirmUser) {
+                            return tempCart
+                        } else {
+                            return cart
+                        }
+                    }
+                    return tempCart
+                }
+                return cart
+            }).filter(cart => cart.amount > 0)
+            console.log({ tempCartDesc});
+            return { ...state, listCart: tempCartDesc }
         default:
             return state;
     }

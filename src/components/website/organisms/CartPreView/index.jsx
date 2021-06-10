@@ -3,6 +3,7 @@ import CartPreviewItem from 'components/website/molecules/CartPreviewItem'
 import React from 'react'
 import { FiCheck, FiEye } from 'react-icons/fi'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 function CartPreView() {
     const { listCart, total } = useSelector(state => state.cart)
@@ -27,22 +28,21 @@ function CartPreView() {
             </div>
             <div className='grid grid-cols-2 py-2 text-center text-[17px] text-white font-body font-medium border-t border-gray-600'>
                 <div className='border-r border-gray-300'>
-                    <Text
-                        varian='span'
+                    <Link
+                        to='/cart'
                         className='pl-3 flex items-center'
                     >
                         <FiEye className='mr-2' />
-                        View cart
-                    </Text>
+                            View cart
+                    </Link>
                 </div>
                 <div>
-                    <Text
-                        varian='span'
+                    <Link
                         className='pl-3 flex items-center'
-                    >
+                        to='/checkout'>
                         <FiCheck className='mr-2' />
-                        Check out
-                    </Text>
+                            Check out
+                        </Link>
                 </div>
             </div>
         </>
