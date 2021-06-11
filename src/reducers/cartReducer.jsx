@@ -1,6 +1,6 @@
 import { getFromLocalStorage, setToLocalStorage } from "service/utilities/localStorage";
 
-const { ADD_TO_CART, GET_TOTAL, SAVE_CART_TO_LOCAL, REMOVE_CART_ITEM, CHANGE_AMOUNT_UP, CHANGE_AMOUNT_INCREASE, CHANGE_AMOUNT_DECREASE, CLEAR_CART } = require("service/constants/actionTypeCartConstant");
+const { ADD_TO_CART, GET_TOTAL, SAVE_CART_TO_LOCAL, REMOVE_CART_ITEM, CHANGE_AMOUNT_INCREASE, CHANGE_AMOUNT_DECREASE, CLEAR_CART } = require("service/constants/actionTypeCartConstant");
 
 const initialState = getFromLocalStorage('cart') || {
     listCart: [],

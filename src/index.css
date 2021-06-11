@@ -959,6 +959,9 @@ select{
 .-mb-8{
 	margin-bottom: -2rem;
 }
+.mr-10{
+	margin-right: 2.5rem;
+}
 .block{
 	display: block;
 }
@@ -1138,6 +1141,9 @@ select{
 }
 .grid-cols-3{
 	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.grid-cols-5{
+	grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 .flex-col{
 	flex-direction: column;
@@ -1736,6 +1742,10 @@ select{
 .text-blue-500{
 	--tw-text-opacity: 1;
 	color: rgba(59, 130, 246, var(--tw-text-opacity));
+}
+.text-red-300{
+	--tw-text-opacity: 1;
+	color: rgba(252, 165, 165, var(--tw-text-opacity));
 }
 .text-opacity-70{
 	--tw-text-opacity: 0.7;

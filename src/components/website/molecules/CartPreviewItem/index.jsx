@@ -1,9 +1,7 @@
-import { getTotalCart } from 'actions/cartActions';
-import { saveCartToLocalStorage } from 'actions/cartActions';
-import { removeCartItem } from 'actions/cartActions';
+import { removeCartItem, saveCartToLocalStorage } from 'actions/cartActions';
 import ImageItem from 'components/common/atoms/ImageItem';
 import Text from 'components/common/atoms/Text';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 function CartPreviewItem({ cartItem, ...props }) {

@@ -35,7 +35,6 @@ function HomePage() {
         ; (async () => {
             try {
                 const dataCategoriesFeature = await CategoryApi.getItemsByOption({ limit: 3, });
-                console.log(dataCategoriesFeature);
                 setCategoriesFeature(dataCategoriesFeature)
             } catch (error) {
                 console.log(error);
@@ -70,7 +69,6 @@ function HomePage() {
                 </Text>
             </section>
             <section className='mt-14 px-32 grid grid-cols-3 gap-[20px]'>
-                {console.log({ categoriesFeature })}
                 {categoriesFeature.map((category, index) => {
                     return <VerticalBanner key={index}
                         url={category.image}
@@ -102,7 +100,7 @@ function HomePage() {
                                     </Button>
                                 )
                                 : ''}
-                        linkTo={`/ category / ${category._id}`}
+                        linkTo={`/category/${category._id}`}
                         linkLabel='Show more'
                     />
                 })}

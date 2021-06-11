@@ -34,7 +34,6 @@ function AddnewProduct() {
         })();
     }, [])
     const onSubmit = (data) => {
-        // console.log(firebaseClient);
         setPending(true);
         ; (async () => {
             try {
