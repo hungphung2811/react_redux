@@ -8,8 +8,9 @@ import { useForm } from 'react-hook-form'
 import firebaseClient from './../../../../service/firebase'
 import ProductApi from 'api/productApi';
 import { getFromLocalStorage } from 'service/utilities/localStorage';
+import { useSelector } from 'react-redux';
 function AddnewProduct() {
-    const { handleSubmit, register, reset,formState:{errors} } = useForm();
+    const { handleSubmit, register, reset, formState: { errors } } = useForm();
 
     const [errorsState, setErrorsState] = useState({
         name: '',
@@ -18,10 +19,8 @@ function AddnewProduct() {
     })
     const [success, setSuccess] = useState(false);
     const [pending, setPending] = useState(false);
-
-
     const [categories, setCategories] = useState([])
-
+    const category = useSelector(state => state.category)
     useEffect(() => {
         (async () => {
             try {
@@ -32,7 +31,10 @@ function AddnewProduct() {
 
             }
         })();
-    }, [])
+    }, [category.listCategories])
+
+
+
     const onSubmit = (data) => {
         setPending(true);
         ; (async () => {
@@ -93,8 +95,10 @@ function AddnewProduct() {
                                     label='price'
                                     require={true}
                                     error={errors.price}
-                                    reg={{ ...register('price', 
-                                    { required: true, min: 0, maxLength: 6 }) }}
+                                    reg={{
+                                        ...register('price',
+                                            { required: true, min: 0, maxLength: 6 })
+                                    }}
                                 />
                                 {errors.price && <p
                                     className='text-xs font-medium text-red-500'>
@@ -153,13 +157,13 @@ function AddnewProduct() {
                                     <span className='ml-1 text-xs text-red-500'>{require ? '*' : ''}</span>
                             </label>
                             <textarea
-                                {...register('description',{required:true})}
+                                {...register('description', { required: true })}
                                 name="description" rows="7"
                                 class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
                                 placeholder="description"></textarea>
-                                {errors.description && <p
-                                    className='text-xs font-medium text-red-500'>
-                                    Vui lòng nhập trường này
+                            {errors.description && <p
+                                className='text-xs font-medium text-red-500'>
+                                Vui lòng nhập trường này
                                     </p>}
                         </div>
                         <div className="px-4 py-3 text-center sm:px-6">

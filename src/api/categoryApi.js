@@ -19,6 +19,17 @@ const CategoryApi = {
         }
         const url = `/category?${arrOption.join('')}`;
         return axiosClient.get(url);
+    }, delete(categoryId, userId, token) {
+        const url = `/category/${categoryId}/${userId}`;
+        return axiosClient.delete(url, { headers: { Authorization: `Bearer ${token}` } });
+    },
+    create(category, userId, token) {
+        const url = `/category/${userId}`;
+        return axiosClient.post(url, category, { headers: { Authorization: `Bearer ${token}` } });
+    },
+    updateProduct(id, category, userId, token) {
+        const url = `/category/${id}/${userId}`;
+        return axiosClient.put(url, category, { headers: { Authorization: `Bearer ${token}` } });
     }
 }
 

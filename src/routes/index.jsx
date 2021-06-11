@@ -1,4 +1,6 @@
 import CategoryDashboardPage from 'components/admin/pages/CategoryDashboardPage'
+import AddnewCategory from 'components/admin/pages/CategoryDashboardPage/AddnewCategory'
+import EditCategory from 'components/admin/pages/CategoryDashboardPage/EditCategory'
 import DashBoardPage from 'components/admin/pages/DashboardPage'
 import ProductDashboardPage from 'components/admin/pages/ProductDashboardPage'
 import AddnewProduct from 'components/admin/pages/ProductDashboardPage/AddnewProduct'
@@ -43,6 +45,12 @@ function Routes() {
                             </Route>
                             <Route exact path='/admin/category'>
                                 <CategoryDashboardPage />
+                            </Route>
+                            <Route exact path='/admin/category/addnew'>
+                                <AddnewCategory />
+                            </Route>
+                            <Route exact path='/admin/category/edit/:id'>
+                                <EditCategory />
                             </Route>
                             <Route path='*'>
                                 404 page website

@@ -11,3 +11,17 @@ export const getCategoriesStatus = (status) => {
         payload: status
     }
 }
+
+export const deleteCategory = id => {
+    return {
+        type: 'DELETE_CATEGORY',
+        payload: id
+    }
+}
+
+export const updateCategory = category => {
+    return {
+        type: 'EDIT_CATEGORY',
+        payload: category
+    }
+}
