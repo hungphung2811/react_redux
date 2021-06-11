@@ -9,7 +9,7 @@ import firebaseClient from './../../../../service/firebase'
 import ProductApi from 'api/productApi';
 import { getFromLocalStorage } from 'service/utilities/localStorage';
 function AddnewProduct() {
-    const { handleSubmit, register, reset } = useForm();
+    const { handleSubmit, register, reset,formState:{errors} } = useForm();
 
     const [errorsState, setErrorsState] = useState({
         name: '',
@@ -77,15 +77,13 @@ function AddnewProduct() {
                                     id='name'
                                     label='Name'
                                     require={true}
-                                    error={errorsState.name}
+                                    error={errors.name}
                                     reg={{ ...register('name', { required: true }) }}
                                 />
-                                <Text
-                                    variant='span'
-                                    className='mt-2 text-red-500 text-xs font-body font-medium'
-                                >
-                                    {errorsState.name}
-                                </Text>
+                                {errors.name && <p
+                                    className='text-xs font-medium text-red-500'>
+                                    Vui lòng nhập trường này
+                                </p>}
                             </div>
                             <div className='mt-5'>
                                 <FormGroup
@@ -94,15 +92,14 @@ function AddnewProduct() {
                                     id='price'
                                     label='price'
                                     require={true}
-                                    error={errorsState.price}
-                                    reg={{ ...register('price', { required: true }) }}
+                                    error={errors.price}
+                                    reg={{ ...register('price', 
+                                    { required: true, min: 0, maxLength: 6 }) }}
                                 />
-                                <Text
-                                    variant='span'
-                                    className='mt-2 text-red-500 text-xs font-body font-medium'
-                                >
-                                    {errorsState.price}
-                                </Text>
+                                {errors.price && <p
+                                    className='text-xs font-medium text-red-500'>
+                                    Vui lòng nhập trường này
+                                </p>}
                             </div>
                             <div className='mt-5'>
                                 <FormGroup
@@ -111,15 +108,13 @@ function AddnewProduct() {
                                     id='quantity'
                                     label='Quantity'
                                     require={true}
-                                    error={errorsState.quantity}
+                                    error={errors.quantity}
                                     reg={{ ...register('quantity', { required: true }) }}
                                 />
-                                <Text
-                                    variant='span'
-                                    className='mt-2 text-red-500 text-xs font-body font-medium'
-                                >
-                                    {errorsState.quantity}
-                                </Text>
+                                {errors.quantity && <p
+                                    className='text-xs font-medium text-red-500'>
+                                    Vui lòng nhập trường này
+                                </p>}
                             </div>
                             <div className='mt-5'>
                                 <label htmlFor="country" className="block text-sm font-medium text-gray-700">
@@ -130,6 +125,10 @@ function AddnewProduct() {
                                     {...register('image', { required: true })}
                                     className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                     type="file" />
+                                {errors.image && <p
+                                    className='text-xs font-medium text-red-500'>
+                                    Vui lòng nhập trường này
+                                </p>}
                             </div>
                             <div className='mt-5'>
                                 <label htmlFor="country" className="block text-sm font-medium text-gray-700">
@@ -148,6 +147,21 @@ function AddnewProduct() {
                                 </select>
                             </div>
                         </div>
+                        <div className='px-4'>
+                            <label htmlFor="country" className="block text-sm font-medium text-gray-700">
+                                Description
+                                    <span className='ml-1 text-xs text-red-500'>{require ? '*' : ''}</span>
+                            </label>
+                            <textarea
+                                {...register('description',{required:true})}
+                                name="description" rows="7"
+                                class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
+                                placeholder="description"></textarea>
+                                {errors.description && <p
+                                    className='text-xs font-medium text-red-500'>
+                                    Vui lòng nhập trường này
+                                    </p>}
+                        </div>
                         <div className="px-4 py-3 text-center sm:px-6">
                             <Button
                                 variant='btn-tag'
@@ -157,7 +171,7 @@ function AddnewProduct() {
                                 twCustom={true}
                                 classname='shadow-sm text-sm font-medium rounded-sm hover:bg-yellow-700 transition-colors'
                             >
-                                Register
+                                Save
                                 </Button>
                         </div>
                     </div>

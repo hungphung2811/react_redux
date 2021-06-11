@@ -4,7 +4,12 @@ const CategoryApi = {
     getAll() {
         const url = '/category';
         return axiosClient.get(url);
-    }, getItemsByOption(option) {
+    },
+    getOne(id){
+        const url = `/category/${id}`
+        return axiosClient.get(url)
+    }
+    , getItemsByOption(option) {
         const arrOption = [];
         if (!option) {
             return false;

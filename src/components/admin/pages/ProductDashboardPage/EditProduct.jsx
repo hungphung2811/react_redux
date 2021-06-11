@@ -45,7 +45,7 @@ function EditProduct() {
         })();
     }, [])
 
-    const { handleSubmit, register, reset } = useForm({
+    const { handleSubmit, register, reset, formState: { errors } } = useForm({
         defaultValues: {
             ...product
         }
@@ -110,6 +110,10 @@ function EditProduct() {
                                 >
                                     {errorsState.name}
                                 </Text>
+                                {errors.name && <p
+                                    className='text-xs font-medium text-red-500'>
+                                    Vui lòng nhập trường này
+                                    </p>}
                             </div>
 
 
@@ -129,6 +133,10 @@ function EditProduct() {
                                 >
                                     {errorsState.price}
                                 </Text>
+                                {errors.price && <p
+                                    className='text-xs font-medium text-red-500'>
+                                    Vui lòng nhập trường này
+                                    </p>}
                             </div>
                             <div className='mt-5'>
                                 <FormGroup
@@ -146,6 +154,10 @@ function EditProduct() {
                                 >
                                     {errorsState.quantity}
                                 </Text>
+                                {errors.quantity && <p
+                                    className='text-xs font-medium text-red-500'>
+                                    Vui lòng nhập trường này
+                                    </p>}
                             </div>
                             <div>
                                 <input type="hidden"  {...register('tempImage')} />
@@ -178,6 +190,22 @@ function EditProduct() {
                                 </select>
                             </div>
                         </div>
+
+                        <div className='px-4'>
+                            <label htmlFor="country" className="block text-sm font-medium text-gray-700">
+                                Description
+                                    <span className='ml-1 text-xs text-red-500'>{require ? '*' : ''}</span>
+                            </label>
+                            <textarea
+                                {...register('description', { required: true })}
+                                name="description" rows="7"
+                                class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
+                                placeholder="description"></textarea>
+                            {errors.description && <p
+                                className='text-xs font-medium text-red-500'>
+                                Vui lòng nhập trường này
+                                    </p>}
+                        </div>
                         <div className="px-4 py-3 text-center sm:px-6">
                             <Button
                                 variant='btn-tag'
@@ -187,9 +215,10 @@ function EditProduct() {
                                 twCustom={true}
                                 classname='shadow-sm text-sm font-medium rounded-sm hover:bg-yellow-700 transition-colors'
                             >
-                                Register
+                                Edit
                                 </Button>
                         </div>
+
                     </div>
                 </form>
 

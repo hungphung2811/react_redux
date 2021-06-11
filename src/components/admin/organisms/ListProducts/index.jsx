@@ -15,14 +15,17 @@ import { getFromLocalStorage } from 'service/utilities/localStorage'
 function ListProducts({ products }) {
     const dispatch = useDispatch()
     const handleDeleteProduct = (id) => {
-        try {
-            ; (async () => {
-                const { user, token } = getFromLocalStorage('user');
-                await ProductApi.deleteProduct(id, user._id, token);
-                dispatch(deleteProduct(id));
-            })();
-        } catch (error) {
-            console.log(error);
+        const userConfirm = window.confirm('bạn có muốn xóa ')
+        if (userConfirm) {
+            try {
+                ; (async () => {
+                    const { user, token } = getFromLocalStorage('user');
+                    await ProductApi.deleteProduct(id, user._id, token);
+                    dispatch(deleteProduct(id));
+                })();
+            } catch (error) {
+                console.log(error);
+            }
         }
     }
 
