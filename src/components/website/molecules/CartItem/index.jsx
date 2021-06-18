@@ -1,10 +1,7 @@
-import { increaseAmoutCart } from 'actions/cartActions'
-import { saveCartToLocalStorage } from 'actions/cartActions'
-import { decreaseAmoutCart } from 'actions/cartActions'
-import { getTotalCart } from 'actions/cartActions'
-import { removeCartItem } from 'actions/cartActions'
+import { decreaseAmoutCart, increaseAmoutCart, removeCartItem, saveCartToLocalStorage } from 'actions/cartActions'
+import ImageItem from 'components/common/atoms/ImageItem'
 import Text from 'components/common/atoms/Text'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { HiOutlineArrowDown, HiOutlineArrowUp } from 'react-icons/hi'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -40,10 +37,12 @@ function CartItem({ cart, ...props }) {
                     </Text>
                 </td>
                 <td className='px-5 py-2 border border-gray-300'>
-                    <img className='mx-auto'
-                        width="100"
+                    <ImageItem className='mx-auto'
+                        width="w-[100px]"
                         height="100"
-                        src={cart.image} />
+                        url={cart.image}
+                        alt={cart.name}
+                    />
                 </td>
                 <td className='border border-gray-300 font-medium hover:text-yellow-600'>
                     <Link to={`/detail/${cart._id}`}>

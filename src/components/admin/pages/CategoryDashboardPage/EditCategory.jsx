@@ -1,14 +1,13 @@
 import CategoryApi from 'api/categoryApi';
 import Button from 'components/common/atoms/Button';
 import Text from 'components/common/atoms/Text';
-import Loading from 'components/common/molecules/Loading';
 import FormGroup from 'components/common/molecules/FormGroup';
-import React, { useEffect, useState } from 'react'
-import { useForm } from 'react-hook-form'
-import firebaseClient from './../../../../service/firebase'
-import ProductApi from 'api/productApi';
-import { getFromLocalStorage } from 'service/utilities/localStorage';
+import Loading from 'components/common/molecules/Loading';
+import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router';
+import { getFromLocalStorage } from 'service/utilities/localStorage';
+import firebaseClient from './../../../../service/firebase';
 function EditCategory() {
     const { id } = useParams()
     const [category, setCategories] = useState(null)
@@ -24,7 +23,8 @@ function EditCategory() {
 
             }
         })();
-    }, [])
+        // eslint-disable-next-line no-use-before-define
+    }, [id, reset])
 
     const { handleSubmit, register, reset, formState: { errors } } = useForm({
         defaultValues: {
@@ -94,7 +94,7 @@ function EditCategory() {
                                 {errors.cateName && <p
                                     className='text-xs font-medium text-red-500'>
                                     Vui lòng nhập trường này
-                                    </p>}
+                                </p>}
                             </div>
                             <div>
                                 <input type="hidden"  {...register('tempImage')} />
@@ -122,7 +122,7 @@ function EditCategory() {
                                 classname='shadow-sm text-sm font-medium rounded-sm hover:bg-yellow-700 transition-colors'
                             >
                                 Edit
-                                </Button>
+                            </Button>
                         </div>
 
                     </div>

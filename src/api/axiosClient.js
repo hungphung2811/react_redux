@@ -2,8 +2,8 @@ import axios from 'axios';
 import { URI } from 'service/constants/configConstant';
 
 const axiosClient = axios.create({
-    baseURL: 'http://localhost:4000/api',
-    // baseURL: URI,
+    // baseURL: 'http://localhost:4000/api',
+    baseURL: URI,
     header: {
         'content-type': 'application/json'
     }

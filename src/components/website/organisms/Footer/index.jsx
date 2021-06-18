@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 function Footer() {
     return (
-        <footer className='px-[160px] bg-gray-100'>
+        <footer className='px-[160px] bg-gray-100 mt-5'>
             <div className='py-[110px] grid grid-cols-4 gap-[50px] font-body '>
                 <div>
                     <div>
@@ -15,12 +15,12 @@ function Footer() {
                             className='uppercase text-gray-700 font-semibold text-[14px]'
                         >
                             PAYMENT METHOD
-                    </Text>
+                        </Text>
                         <Text
                             className='text-[12px] mt-2 font-medium text-gray-700'
                         >
                             Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.
-                    </Text>
+                        </Text>
                     </div>
                     <div className='mt-2 text-[25px]'>
                         <ul className='flex'>
@@ -37,14 +37,55 @@ function Footer() {
                         </Text>
                     </div>
                 </div>
+                
                 <div>
                     <Text
                         heading='h4'
                         className='uppercase text-gray-700 font-semibold text-[14px]'
                     >
-                        top rated
+                        Top rated
                     </Text>
+                    <div className='mt-3'>
+                        <ul className='font-body font-medium text-[12px]'>
+                            <li className='mt-2'>
+                                <Link className='hover:text-yellow-600' to='/home'>
+                                    FAQ
+                                </Link>
+                            </li>
+                            <li className='mt-2'>
+                                <Link className='hover:text-yellow-600' to='/home'>
+                                    Shipment
+                                </Link>
+                            </li>
+                            <li className='mt-2'>
+                                <Link className='hover:text-yellow-600' to='/home'>
+                                    Returns
+                                </Link>
+                            </li>
+                            <li className='mt-2'>
+                                <Link className='hover:text-yellow-600' to='/home'>
+                                    Policies
+                                </Link>
+                            </li>
+                            <li className='mt-2'>
+                                <Link className='hover:text-yellow-600' to='/home'>
+                                    Gift
+                                </Link>
+                            </li>
+                            <li className='mt-2'>
+                                <Link className='hover:text-yellow-600' to='/home'>
+                                    Clothing
+                                </Link>
+                            </li>
+                            <li className='mt-2'>
+                                <Link className='hover:text-yellow-600' to='/home'>
+                                    Purchase
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+                
                 <div>
                     <Text
                         heading='h4'
@@ -55,37 +96,37 @@ function Footer() {
                     <div className='mt-3'>
                         <ul className='font-body font-medium text-[12px]'>
                             <li className='mt-2'>
-                                <Link to='/home'>
+                                <Link className='hover:text-yellow-600' to='/home'>
                                     FAQ
                                 </Link>
                             </li>
                             <li className='mt-2'>
-                                <Link to='/home'>
+                                <Link className='hover:text-yellow-600' to='/home'>
                                     Shipment
                                 </Link>
                             </li>
                             <li className='mt-2'>
-                                <Link to='/home'>
+                                <Link className='hover:text-yellow-600' to='/home'>
                                     Returns
                                 </Link>
                             </li>
                             <li className='mt-2'>
-                                <Link to='/home'>
+                                <Link className='hover:text-yellow-600' to='/home'>
                                     Policies
                                 </Link>
                             </li>
                             <li className='mt-2'>
-                                <Link to='/home'>
+                                <Link className='hover:text-yellow-600' to='/home'>
                                     Gift
                                 </Link>
                             </li>
                             <li className='mt-2'>
-                                <Link to='/home'>
+                                <Link className='hover:text-yellow-600' to='/home'>
                                     Clothing
                                 </Link>
                             </li>
                             <li className='mt-2'>
-                                <Link to='/home'>
+                                <Link className='hover:text-yellow-600' to='/home'>
                                     Purchase
                                 </Link>
                             </li>
@@ -99,10 +140,46 @@ function Footer() {
                     >
                         company
                     </Text>
+                    <div className='mt-3'>
+                        <ul className='font-body font-medium text-[12px]'>
+                            <li className='mt-2'>
+                                <Link className='hover:text-yellow-600' to='/home'>
+                                    FAQ
+                                </Link>
+                            </li>
+                            <li className='mt-2'>
+                                <Link className='hover:text-yellow-600' to='/home'>
+                                    Shipment
+                                </Link>
+                            </li>
+                            <li className='mt-2'>
+                                <Link className='hover:text-yellow-600' to='/home'>
+                                    Returns
+                                </Link>
+                            </li>
+                            <li className='mt-2'>
+                                <Link className='hover:text-yellow-600' to='/home'>
+                                    Policies
+                                </Link>
+                            </li>
+                            <li className='mt-2'>
+                                <Link className='hover:text-yellow-600' to='/home'>
+                                    Gift
+                                </Link>
+                            </li>
+                            <li className='mt-2'>
+                                <Link className='hover:text-yellow-600' to='/home'>
+                                    Clothing
+                                </Link>
+                            </li>
+                            <li className='mt-2'>
+                                <Link className='hover:text-yellow-600' to='/home'>
+                                    Purchase
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <div className='h-20 bg-yellow-300'>
-
             </div>
         </footer >
 

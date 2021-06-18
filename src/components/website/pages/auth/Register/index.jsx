@@ -1,15 +1,15 @@
 import AuthApi from 'api/authApi';
-import Loading from 'components/common/molecules/Loading';
 import Button from 'components/common/atoms/Button';
 import Text from 'components/common/atoms/Text';
 import FormGroup from 'components/common/molecules/FormGroup';
+import Loading from 'components/common/molecules/Loading';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
 
 function Register() {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, } = useForm();
 
     const [errorsState, setErrorsState] = useState({
         name: '',

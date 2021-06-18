@@ -16,7 +16,8 @@ function CardProduct({ product, ...props }) {
     useEffect(() => {
         dispatch(getTotalCart());
         dispatch(saveCartToLocalStorage(cart));
-    }, [listCart])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [dispatch, listCart])
 
     const handleAddToCart = (product) => {
         dispatch(addToCart(product))

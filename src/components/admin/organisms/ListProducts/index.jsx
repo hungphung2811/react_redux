@@ -22,6 +22,7 @@ function ListProducts({ products }) {
                     const { user, token } = getFromLocalStorage('user');
                     await ProductApi.deleteProduct(id, user._id, token);
                     dispatch(deleteProduct(id));
+                    window.alert('xoa thanh cong')
                 })();
             } catch (error) {
                 console.log(error);

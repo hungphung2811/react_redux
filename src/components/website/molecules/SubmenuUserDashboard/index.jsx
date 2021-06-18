@@ -29,7 +29,8 @@ function SubmenuUserDashboard({ user }) {
         <div className='px-3 text-gray-500 relative'>
             <ImageItem
                 onClick={toggleSubMenu}
-                className='w-5 h-5 ml-2 cursor-pointer'
+                width ='w-5'
+                className='h-5 ml-2 cursor-pointer'
                 url={user.user.avatar}
                 alt='user'
             />
@@ -52,9 +53,9 @@ function SubmenuUserDashboard({ user }) {
                     </li> : ''
                 }
                 <li className='px-2 py-0.5 text-sm font-medium capitalize cursor-pointer'>
-                    <Link to='/buyer/logout' onClick={logOut}>
+                    <span onClick={logOut}>
                         logout
-                    </Link>
+                    </span>
                 </li>
             </ul>
         </div>

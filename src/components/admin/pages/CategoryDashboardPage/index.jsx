@@ -1,13 +1,8 @@
-import { deleteCategory } from 'actions/categoriesActions';
-import { getCategories } from 'actions/categoriesActions';
-import { deleteProduct } from 'actions/productActions';
-import { getProducts } from 'actions/productActions';
+import { deleteCategory, getCategories } from 'actions/categoriesActions';
 import CategoryApi from 'api/categoryApi';
-import ProductApi from 'api/productApi';
 import TdTable from 'components/admin/atoms/TdTable';
 import ThTable from 'components/admin/atoms/ThTable';
 import RowTable from 'components/admin/molecules/RowTable';
-import ListProducts from 'components/admin/organisms/ListProducts';
 import Loading from 'components/common/molecules/Loading';
 import React, { useEffect } from 'react';
 import { FaTimes } from 'react-icons/fa';

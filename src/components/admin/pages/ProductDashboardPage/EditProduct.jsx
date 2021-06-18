@@ -12,12 +12,6 @@ import { useParams } from 'react-router';
 function EditProduct() {
     const { id } = useParams()
     const [product, setProduct] = useState(null)
-    const [errorsState, setErrorsState] = useState({
-        name: '',
-        price: '',
-        quantity: ''
-    })
-    const [success, setSuccess] = useState(false);
     const [pending, setPending] = useState(false);
 
     const [categories, setCategories] = useState([])
@@ -32,7 +26,8 @@ function EditProduct() {
 
             }
         })();
-    }, [])
+    // eslint-disable-next-line no-use-before-define
+    }, [id, reset])
 
     useEffect(() => {
         (async () => {
@@ -43,7 +38,8 @@ function EditProduct() {
             } catch (error) {
             }
         })();
-    }, [])
+    // eslint-disable-next-line no-use-before-define
+    }, [reset])
 
     const { handleSubmit, register, reset, formState: { errors } } = useForm({
         defaultValues: {
@@ -66,6 +62,7 @@ function EditProduct() {
                             setProduct(newProduct);
                             setPending(false)
                             reset({ ...newProduct, image: null, tempImage: newProduct.image });
+                            window.alert('sua thanh cong')
                         })
                     })
                 } else {
@@ -75,6 +72,7 @@ function EditProduct() {
                     setProduct(newProduct);
                     setPending(false);
                     reset({ ...newProduct, image: null, tempImage: newProduct.image });
+                    window.alert('sua thanh cong')
                 }
             } catch (error) {
                 console.log(error);
@@ -101,14 +99,14 @@ function EditProduct() {
                                     id='name'
                                     label='Name'
                                     require={true}
-                                    error={errorsState.name}
+                                    error={errors.name}
                                     reg={{ ...register('name') }}
                                 />
                                 <Text
                                     variant='span'
                                     className='mt-2 text-red-500 text-xs font-body font-medium'
                                 >
-                                    {errorsState.name}
+                                    {errors.name}
                                 </Text>
                                 {errors.name && <p
                                     className='text-xs font-medium text-red-500'>
@@ -124,14 +122,14 @@ function EditProduct() {
                                     id='price'
                                     label='price'
                                     require={true}
-                                    error={errorsState.price}
+                                    error={errors.price}
                                     reg={{ ...register('price', { required: true }) }}
                                 />
                                 <Text
                                     variant='span'
                                     className='mt-2 text-red-500 text-xs font-body font-medium'
                                 >
-                                    {errorsState.price}
+                                    {errors.price}
                                 </Text>
                                 {errors.price && <p
                                     className='text-xs font-medium text-red-500'>
@@ -145,14 +143,14 @@ function EditProduct() {
                                     id='quantity'
                                     label='Quantity'
                                     require={true}
-                                    error={errorsState.quantity}
+                                    error={errors.quantity}
                                     reg={{ ...register('quantity', { required: true }) }}
                                 />
                                 <Text
                                     variant='span'
                                     className='mt-2 text-red-500 text-xs font-body font-medium'
                                 >
-                                    {errorsState.quantity}
+                                    {errors.quantity}
                                 </Text>
                                 {errors.quantity && <p
                                     className='text-xs font-medium text-red-500'>

@@ -11,7 +11,7 @@ import { useHistory } from 'react-router-dom';
 import { setToLocalStorage } from 'service/utilities/localStorage';
 
 function Register() {
-    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, } = useForm();
     const history = useHistory();
     const dispatch = useDispatch();
 

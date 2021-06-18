@@ -1,7 +1,4 @@
-import { saveCartToLocalStorage } from 'actions/cartActions'
-import { getTotalCart } from 'actions/cartActions'
-import { clearCart } from 'actions/cartActions'
-import Button from 'components/common/atoms/Button'
+import { clearCart, getTotalCart, saveCartToLocalStorage } from 'actions/cartActions'
 import Text from 'components/common/atoms/Text'
 import CartPreviewItem from 'components/website/molecules/CartPreviewItem'
 import React, { useEffect } from 'react'
@@ -16,7 +13,9 @@ function CartPreView() {
     useEffect(() => {
         dispatch(getTotalCart());
         dispatch(saveCartToLocalStorage(cartState));
-    }, [cartState.listCart])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [dispatch, listCart])
+    
     const handleClearCart = () => {
         const userConfirm = window.confirm('ban co muon xoa tat ca')
         if (userConfirm) {

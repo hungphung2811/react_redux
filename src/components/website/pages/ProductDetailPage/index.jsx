@@ -42,7 +42,7 @@ function DetailPage() {
                 })
             }
         })();
-    }, [id])
+    }, [id, product])
 
     return (
         <>

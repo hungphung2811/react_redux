@@ -1,23 +1,15 @@
 import CategoryApi from 'api/categoryApi';
-import Button from 'components/common/atoms/Button';
-import Text from 'components/common/atoms/Text';
-import Loading from 'components/common/molecules/Loading';
-import FormGroup from 'components/common/molecules/FormGroup';
-import React, { useEffect, useState } from 'react'
-import { useForm } from 'react-hook-form'
-import firebaseClient from './../../../../service/firebase'
 import ProductApi from 'api/productApi';
-import { getFromLocalStorage } from 'service/utilities/localStorage';
+import Button from 'components/common/atoms/Button';
+import FormGroup from 'components/common/molecules/FormGroup';
+import Loading from 'components/common/molecules/Loading';
+import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
+import { getFromLocalStorage } from 'service/utilities/localStorage';
+import firebaseClient from './../../../../service/firebase';
 function AddnewProduct() {
     const { handleSubmit, register, reset, formState: { errors } } = useForm();
-
-    const [errorsState, setErrorsState] = useState({
-        name: '',
-        price: '',
-        quantity: ''
-    })
-    const [success, setSuccess] = useState(false);
     const [pending, setPending] = useState(false);
     const [categories, setCategories] = useState([])
     const category = useSelector(state => state.category)
@@ -31,7 +23,7 @@ function AddnewProduct() {
 
             }
         })();
-    }, [category.listCategories])
+    }, [reset,category.listCategories])
 
 
 
@@ -51,6 +43,7 @@ function AddnewProduct() {
                             console.log(newProduct);
                             setPending(false)
                             reset();
+                            window.alert('them thanh cong')
                         })
                     })
                 }
@@ -97,7 +90,7 @@ function AddnewProduct() {
                                     error={errors.price}
                                     reg={{
                                         ...register('price',
-                                            { required: true, min: 0, maxLength: 6 })
+                                            { required: true, min: 1, maxLength: 6 })
                                     }}
                                 />
                                 {errors.price && <p
@@ -113,7 +106,7 @@ function AddnewProduct() {
                                     label='Quantity'
                                     require={true}
                                     error={errors.quantity}
-                                    reg={{ ...register('quantity', { required: true }) }}
+                                    reg={{ ...register('quantity', { required: true, min: 1 }) }}
                                 />
                                 {errors.quantity && <p
                                     className='text-xs font-medium text-red-500'>
@@ -154,7 +147,7 @@ function AddnewProduct() {
                         <div className='px-4'>
                             <label htmlFor="country" className="block text-sm font-medium text-gray-700">
                                 Description
-                                    <span className='ml-1 text-xs text-red-500'>{require ? '*' : ''}</span>
+                                <span className='ml-1 text-xs text-red-500'>{require ? '*' : ''}</span>
                             </label>
                             <textarea
                                 {...register('description', { required: true })}
@@ -164,7 +157,7 @@ function AddnewProduct() {
                             {errors.description && <p
                                 className='text-xs font-medium text-red-500'>
                                 Vui lòng nhập trường này
-                                    </p>}
+                            </p>}
                         </div>
                         <div className="px-4 py-3 text-center sm:px-6">
                             <Button
@@ -176,7 +169,7 @@ function AddnewProduct() {
                                 classname='shadow-sm text-sm font-medium rounded-sm hover:bg-yellow-700 transition-colors'
                             >
                                 Save
-                                </Button>
+                            </Button>
                         </div>
                     </div>
                 </form>
