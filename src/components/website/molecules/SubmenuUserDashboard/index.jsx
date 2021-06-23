@@ -4,7 +4,7 @@ import ImageItem from 'components/common/atoms/ImageItem';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import { deleteInLocalStorage, setToLocalStorage } from 'service/utilities/localStorage';
+import { deleteInLocalStorage } from 'service/utilities/localStorage';
 
 function SubmenuUserDashboard({ user }) {
     const [active, setActive] = useState(false);
@@ -22,7 +22,6 @@ function SubmenuUserDashboard({ user }) {
             await AuthApi.signOut();
             dispatch(changeStatusLogin(false))
             deleteInLocalStorage('user');
-            setToLocalStorage('isLogged', false);
             history.push('/home')
         })();
     }
@@ -30,7 +29,7 @@ function SubmenuUserDashboard({ user }) {
         <div className='px-3 text-gray-500 relative'>
             <ImageItem
                 onClick={toggleSubMenu}
-                width='w-5'
+                width ='w-5'
                 className='h-5 ml-2 cursor-pointer'
                 url={user.user.avatar}
                 alt='user'
@@ -50,7 +49,7 @@ function SubmenuUserDashboard({ user }) {
                     <li className='px-2 py-0.5 text-sm font-medium capitalize cursor-pointer'>
                         <Link to='/admin'>
                             dashboard
-                        </Link>
+                    </Link>
                     </li> : ''
                 }
                 <li className='px-2 py-0.5 text-sm font-medium capitalize cursor-pointer'>
