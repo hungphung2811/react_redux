@@ -41,6 +41,7 @@ function CartPage() {
                     dispatch(saveCartToLocalStorage(cartState))
                     reset();
                     setLoading(false)
+                    alert('order successful')
                 })
             } catch (error) {
                 setLoading(false)
