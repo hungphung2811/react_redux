@@ -1,21 +1,20 @@
+import Footer from 'components/website/organisms/Footer'
+import Header from 'components/website/organisms/Header'
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 function TemplateAuth({ children }) {
     return (
-        <div>
-            <header>
-                header auth
-                <nav>
-                    <Link to='/home'>
-                        quay lai home
-                    </Link>
-                </nav>
-            </header>
+        <>
+            <div className={`shadow-sm px-16 sticky top-0 z-50 bg-white`}>
+                <Header />
+            </div>
             <div>
                 {children}
             </div>
-        </div>
+            <div>
+                <Footer/>
+            </div>
+        </>
     )
 }
 

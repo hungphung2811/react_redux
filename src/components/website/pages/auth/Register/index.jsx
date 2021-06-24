@@ -51,7 +51,7 @@ function Register() {
                         return changeState('email', errorEmail);
                     })
                 } else if (errorPassword) {
-                    setErrorsState(()=>{
+                    setErrorsState(() => {
                         return changeState('password', errorPassword);
                     })
                 }
@@ -63,14 +63,20 @@ function Register() {
 
         <>
             <div className="mt-10 sm:mt-14 mx-auto w-[600px]">
-                <Text className={`${success ? 'block' : 'hidden'} px-2 py-1 mb-2 rounded-sm bg-green-400 bg-opacity-80 font-medium text-xs`}>
-                    ban dang dang ky thanh cong
-                            <span className='underline'>
-                        <Link to='/buyer/login'> dawng nhap</Link>
+                <Text className={`${success ? 'block' : 'hidden'} px-2 py-1 mb-2 rounded-sm bg-green-400 bg-opacity-80 text-gray-700 font-medium text-xs`}>
+                    Register successfull
+                    <span className='underline'>
+                        <Link to='/auth/login' className='ml-2 text-blue-600 font-medium'>Login</Link>
                     </span>
                 </Text>
-                <form onSubmit={handleSubmit(onhandleSubmit)}>
-                    <div className="shadow overflow-hidden sm:rounded-md border-b-0 border border-gray-100">
+
+                <div className=" pb-3 shadow overflow-hidden sm:rounded-md border-b-0 border border-gray-100">
+                    <div className='px-5 mt-3'>
+                        <Text className='text-2xl'>
+                            Register
+                        </Text>
+                    </div>
+                    <form onSubmit={handleSubmit(onhandleSubmit)}>
                         <div className="px-4 py-5 bg-white sm:p-6">
                             <div>
                                 <FormGroup
@@ -134,18 +140,24 @@ function Register() {
                                 classname='shadow-sm text-sm font-medium rounded-sm hover:bg-yellow-700 transition-colors'
                             >
                                 Register
-                                </Button>
+                            </Button>
                         </div>
+                    </form>
+                    <div className='mt-3 text-center'>
+                        <Text className='text-[15px]'>
+                            or Login . <Link className='text-blue-600 font-medium' to='/auth/login'>Login your account</Link>
+                        </Text>
                     </div>
-                </form>
+                </div>
+
             </div>
             <div className={`${pending ? 'block' : 'hidden'}`}>
                 <Loading />
             </div>
         </>
 
-    
-)
+
+    )
 }
 
 export default Register

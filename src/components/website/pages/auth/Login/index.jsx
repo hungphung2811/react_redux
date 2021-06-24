@@ -7,7 +7,7 @@ import FormGroup from 'components/common/molecules/FormGroup';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { setToLocalStorage } from 'service/utilities/localStorage';
 
 function Register() {
@@ -86,7 +86,7 @@ function Register() {
                 <div className='shadow overflow-hidden sm:rounded-md border-b-0 border border-gray-100 px-4 py-5 bg-white sm:p-6'>
                     <div>
                         <Text className='text-2xl mb-5'>
-                            Đăng nhập
+                            Login
                         </Text>
                     </div>
                     <form onSubmit={handleSubmit(onhandleSubmit)}>
@@ -135,10 +135,15 @@ function Register() {
                                 twCustom={true}
                                 classname='shadow-sm text-sm font-medium rounded-sm hover:bg-yellow-700 transition-colors'
                             >
-                                Register
+                                Login
                                 </Button>
                         </div>
                     </form>
+                    <div className='mt-5 text-center'>
+                        <Text className='text-[15px]'>
+                            or Register . <Link className='text-blue-600 font-medium' to='/auth/register'> Create account</Link>
+                        </Text>
+                    </div>
                 </div>
             </div>
             <div className={`${pending ? 'block' : 'hidden'}`}>
