@@ -2,6 +2,8 @@ import CategoryDashboardPage from 'components/admin/pages/CategoryDashboardPage'
 import AddnewCategory from 'components/admin/pages/CategoryDashboardPage/AddnewCategory'
 import EditCategory from 'components/admin/pages/CategoryDashboardPage/EditCategory'
 import DashBoardPage from 'components/admin/pages/DashboardPage'
+import OrderDashbordPage from 'components/admin/pages/OrderDashbordPage'
+import EditOrderPage from 'components/admin/pages/OrderDashbordPage/EditOrderPage'
 import ProductDashboardPage from 'components/admin/pages/ProductDashboardPage'
 import AddnewProduct from 'components/admin/pages/ProductDashboardPage/AddnewProduct'
 import EditProduct from 'components/admin/pages/ProductDashboardPage/EditProduct'
@@ -51,6 +53,14 @@ function Routes() {
                             </Route>
                             <Route exact path='/admin/category/edit/:id'>
                                 <EditCategory />
+                            </Route>
+
+
+                            <Route exact path='/admin/order'>
+                                <OrderDashbordPage />
+                            </Route>
+                            <Route exact path='/admin/order/edit/:id'>
+                                <EditOrderPage />
                             </Route>
                             <Route path='*'>
                                 404 page website

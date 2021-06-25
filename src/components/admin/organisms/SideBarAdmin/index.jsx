@@ -1,9 +1,8 @@
 import SideBarItem from 'components/admin/molecules/SidebarItem';
 import React from 'react';
 import { BiLayer } from 'react-icons/bi';
-import { BsFileEarmarkText, BsNewspaper, BsPeople } from 'react-icons/bs';
+import { BsFileEarmarkText, BsPeople } from 'react-icons/bs';
 import { FiHome, FiShoppingCart } from 'react-icons/fi';
-import { MdReport } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
 function SideBarAdmin() {
@@ -24,8 +23,8 @@ function SideBarAdmin() {
                         <SideBarItem to='/admin/product' icon={<FiShoppingCart />} label='product' />
                         <SideBarItem to='/admin/category' icon={<BiLayer />} label='categories' />
                         <SideBarItem to='/admin/customer' icon={<BsPeople />} label='customer' />
-                        <SideBarItem to='/admin/blog' icon={<BsNewspaper />} label='blog' />
-                        <SideBarItem to='/admin/report' icon={<MdReport />} label='report' />
+                        {/* <SideBarItem to='/admin/blog' icon={<BsNewspaper />} label='blog' /> */}
+                        {/* <SideBarItem to='/admin/report' icon={<MdReport />} label='report' /> */}
                     </ul>
                 </div>
             </aside>

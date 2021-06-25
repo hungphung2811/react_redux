@@ -8,6 +8,9 @@ const OrderApi = {
     get() {
         const url = '/order'
         return axiosClient.get(url)
+    }, getOne(id) {
+        const url = `/order/${id}`;
+        return axiosClient.get(url)
     }
 }
 
